@@ -1,0 +1,1668 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <title>Discover Sri Lanka 🇱🇰</title>
+
+    <style>
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            background: #f4faf7;
+            color: #163c2d;
+        }
+
+        /* ================= NAVBAR ================= */
+
+        nav {
+            height: 72px;
+            background: rgba(255,255,255,0.95);
+            display: flex;
+            align-items: center;
+            justify-content: space-between;
+            padding: 0 7%;
+            position: sticky;
+            top: 0;
+            z-index: 100;
+            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
+        }
+
+        .logo {
+            font-size: 21px;
+            font-weight: bold;
+        }
+
+        nav a {
+            text-decoration: none;
+            color: #173b2b;
+            margin-left: 25px;
+            font-size: 14px;
+        }
+
+        /* ================= HERO ================= */
+
+        .hero {
+            min-height: 620px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+
+            background:
+                linear-gradient(
+                    rgba(0,45,30,0.55),
+                    rgba(0,45,30,0.65)
+                ),
+                url("https://images.unsplash.com/photo-1588598198321-9735fd5247b8?auto=format&fit=crop&w=1600&q=80");
+
+            background-size: cover;
+            background-position: center;
+        }
+
+        .hero-content {
+            color: white;
+            max-width: 850px;
+            padding: 30px;
+        }
+
+        .small-title {
+            letter-spacing: 3px;
+            font-size: 13px;
+            margin-bottom: 18px;
+            opacity: 0.9;
+        }
+
+        .hero h1 {
+            font-size: 64px;
+            margin-bottom: 20px;
+        }
+
+        .hero p {
+            font-size: 19px;
+            line-height: 1.7;
+            margin-bottom: 35px;
+        }
+
+        .explore-btn {
+            display: inline-block;
+            background: white;
+            color: #126943;
+            padding: 15px 32px;
+            border-radius: 40px;
+            text-decoration: none;
+            font-weight: bold;
+            transition: 0.3s;
+        }
+
+        .explore-btn:hover {
+            transform: scale(1.05);
+        }
+
+        /* ================= SECTION ================= */
+
+        section {
+            padding: 80px 7%;
+        }
+
+        .section-title {
+            text-align: center;
+            font-size: 34px;
+            margin-bottom: 12px;
+        }
+
+        .section-subtitle {
+            text-align: center;
+            color: #718078;
+            margin-bottom: 45px;
+        }
+
+        /* ================= CATEGORY CARDS ================= */
+
+        .cards {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .card {
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+            cursor: pointer;
+        }
+
+        .card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
+        }
+
+        .card-image {
+            height: 190px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 70px;
+            background: #e4f4eb;
+        }
+
+        .card-content {
+            padding: 25px;
+        }
+
+        .card-content h3 {
+            font-size: 21px;
+            margin-bottom: 10px;
+        }
+
+        .card-content p {
+            color: #718078;
+            line-height: 1.6;
+            font-size: 14px;
+        }
+
+        /* ================= PROVINCES ================= */
+
+        .province-container {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 18px;
+            max-width: 1000px;
+            margin: auto;
+        }
+
+        .province {
+            background: white;
+            padding: 22px;
+            border-radius: 18px;
+            text-align: center;
+            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
+            cursor: pointer;
+            transition: 0.3s;
+        }
+
+        .province:hover {
+            transform: translateY(-6px);
+            background: #e8f7ee;
+        }
+
+        .province span {
+            font-size: 30px;
+            display: block;
+            margin-bottom: 10px;
+        }
+
+        .province h3 {
+            font-size: 16px;
+        }
+
+        /* ================= DESTINATIONS ================= */
+
+        .destination-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 25px;
+        }
+
+        .destination {
+            background: white;
+            border-radius: 22px;
+            overflow: hidden;
+            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
+            transition: 0.3s;
+        }
+
+        .destination:hover {
+            transform: translateY(-8px);
+        }
+
+        .destination-img {
+            height: 210px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 75px;
+            background: #dff1e8;
+        }
+
+        .destination-info {
+            padding: 22px;
+        }
+
+        .destination-info h3 {
+            margin-bottom: 8px;
+        }
+
+        .destination-info p {
+            color: #718078;
+            font-size: 14px;
+        }
+
+        .location {
+            margin-top: 12px;
+            color: #168152;
+            font-size: 13px;
+            font-weight: bold;
+        }
+
+        /* ================= SEARCH ================= */
+
+        .search-box {
+            max-width: 650px;
+            margin: 0 auto 45px;
+            position: relative;
+        }
+
+        .search-box input {
+            width: 100%;
+            padding: 17px 22px;
+            border: none;
+            border-radius: 35px;
+            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
+            outline: none;
+            font-size: 15px;
+        }
+
+        /* ================= FOOTER ================= */
+
+        footer {
+            background: #123c2b;
+            color: white;
+            text-align: center;
+            padding: 40px 20px;
+        }
+
+        footer h2 {
+            margin-bottom: 10px;
+        }
+
+        footer p {
+            opacity: 0.8;
+            font-size: 14px;
+        }
+
+        /* ================= MOBILE APP BAR ================= */
+
+        .bottom-nav {
+            display: none;
+        }
+
+        /* ================= MOBILE ================= */
+
+        @media(max-width:700px) {
+
+            nav {
+                height: 62px;
+                padding: 0 20px;
+            }
+
+            nav a {
+                display: none;
+            }
+
+            .logo {
+                font-size: 18px;
+            }
+
+            .hero {
+                min-height: 570px;
+            }
+
+            .hero h1 {
+                font-size: 42px;
+            }
+
+            .hero p {
+                font-size: 16px;
+            }
+
+            section {
+                padding: 60px 20px;
+            }
+
+            .section-title {
+                font-size: 28px;
+            }
+
+            .cards,
+            .province-container,
+            .destination-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .bottom-nav {
+                display: flex;
+                position: fixed;
+                bottom: 0;
+                left: 0;
+                right: 0;
+                height: 68px;
+                background: rgba(255,255,255,0.96);
+                backdrop-filter: blur(10px);
+                justify-content: space-around;
+                align-items: center;
+                z-index: 200;
+                box-shadow: 0 -3px 20px rgba(0,0,0,0.1);
+            }
+
+            .bottom-nav a {
+                text-decoration: none;
+                color: #587066;
+                text-align: center;
+                font-size: 11px;
+            }
+
+            .bottom-nav span {
+                display: block;
+                font-size: 23px;
+                margin-bottom: 3px;
+            }
+
+            footer {
+                padding-bottom: 100px;
+            }
+        }
+
+    </style>
+
+</head>
+
+
+<body>
+
+
+<!-- ================= NAVIGATION ================= -->
+
+<nav>
+
+    <div class="logo">
+        🇱🇰 Discover Sri Lanka
+    </div>
+
+    <div>
+        <a href="#home">Home</a>
+        <a href="#explore">Explore</a>
+        <a href="#provinces">Provinces</a>
+        <a href="#destinations">Places</a>
+    </div>
+
+</nav>
+
+
+<!-- ================= HERO ================= -->
+
+<section class="hero" id="home">
+
+    <div class="hero-content">
+
+        <div class="small-title">
+            THE PEARL OF THE INDIAN OCEAN
+        </div>
+
+        <h1>
+            Discover Sri Lanka 🇱🇰
+        </h1>
+
+        <p>
+            Explore breathtaking places, delicious food,
+            ancient heritage, rich culture and unforgettable
+            adventures across the beautiful island of Sri Lanka.
+        </p>
+
+        <a href="#explore" class="explore-btn">
+            Start Exploring →
+        </a>
+
+    </div>
+
+</section>
+
+
+<!-- ================= EXPLORE ================= -->
+
+<section id="explore">
+
+    <h2 class="section-title">
+        Explore Sri Lanka 🌴
+    </h2>
+
+    <p class="section-subtitle">
+        Discover the many sides of our beautiful island.
+    </p>
+
+
+    <div class="cards">
+
+
+        <div class="card">
+
+            <div class="card-image">
+                ⛰️
+            </div>
+
+            <div class="card-content">
+
+                <h3>Mountains</h3>
+
+                <p>
+                    Discover misty mountains, waterfalls,
+                    tea plantations and beautiful highlands.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🏖️
+            </div>
+
+            <div class="card-content">
+
+                <h3>Beaches</h3>
+
+                <p>
+                    Explore golden beaches, tropical coastlines
+                    and the beautiful Indian Ocean.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🍛
+            </div>
+
+            <div class="card-content">
+
+                <h3>Food</h3>
+
+                <p>
+                    Discover Sri Lankan rice and curry,
+                    traditional sweets and local flavours.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🐘
+            </div>
+
+            <div class="card-content">
+
+                <h3>Wildlife</h3>
+
+                <p>
+                    Explore Sri Lanka's amazing wildlife,
+                    national parks and natural habitats.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🏛️
+            </div>
+
+            <div class="card-content">
+
+                <h3>Heritage</h3>
+
+                <p>
+                    Step into Sri Lanka's ancient history,
+                    temples, kingdoms and archaeological sites.
+                </p>
+
+            </div>
+
+        </div>
+
+
+        <div class="card">
+
+            <div class="card-image">
+                🎭
+            </div>
+
+            <div class="card-content">
+
+                <h3>Culture</h3>
+
+                <p>
+                    Experience traditional dance, festivals,
+                    arts and the diverse culture of Sri Lanka.
+                </p>
+
+            </div>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- ================= PROVINCES ================= -->
+
+<section id="provinces">
+
+    <h2 class="section-title">
+        Explore by Province 🗺️
+    </h2>
+
+    <p class="section-subtitle">
+        Choose a province to discover what makes it special.
+    </p>
+
+
+    <div class="province-container">
+
+
+        <div class="province">
+            <span>🌿</span>
+            <h3>Central Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🌊</span>
+            <h3>Eastern Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🌴</span>
+            <h3>Northern Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🏝️</span>
+            <h3>North Central Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🌾</span>
+            <h3>North Western Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🌳</span>
+            <h3>Sabaragamuwa Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🌅</span>
+            <h3>Southern Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🏙️</span>
+            <h3>Uva Province</h3>
+        </div>
+
+
+        <div class="province">
+            <span>🌇</span>
+            <h3>Western Province</h3>
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= DESTINATIONS ================= -->
+
+<section id="destinations">
+
+    <h2 class="section-title">
+        Popular Destinations 📍
+    </h2>
+
+    <p class="section-subtitle">
+        A glimpse of some amazing places to discover.
+    </p>
+
+
+    <div class="search-box">
+
+        <input
+            type="text"
+            placeholder="🔎 Search destinations..."
+            id="searchInput"
+        >
+
+    </div>
+
+
+    <div class="destination-grid" id="destinationGrid">
+
+
+        <div class="destination">
+
+            <div class="destination-img">
+                🏔️
+            </div>
+
+            <div class="destination-info">
+
+                <h3>Ella</h3>
+
+                <p>
+                    A beautiful mountain destination surrounded
+                    by green hills and tea plantations.
+                </p>
+
+                <div class="location">
+                    📍 Uva Province
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="destination">
+
+            <div class="destination-img">
+                🏖️
+            </div>
+
+            <div class="destination-info">
+
+                <h3>Mirissa</h3>
+
+                <p>
+                    A famous coastal destination with beautiful
+                    beaches and a tropical atmosphere.
+                </p>
+
+                <div class="location">
+                    📍 Southern Province
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="destination">
+
+            <div class="destination-img">
+                🏛️
+            </div>
+
+            <div class="destination-info">
+
+                <h3>Sigiriya</h3>
+
+                <p>
+                    Discover the ancient rock fortress and
+                    one of Sri Lanka's famous heritage sites.
+                </p>
+
+                <div class="location">
+                    📍 Central Province
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="destination">
+
+            <div class="destination-img">
+                🌊
+            </div>
+
+            <div class="destination-info">
+
+                <h3>Arugam Bay</h3>
+
+                <p>
+                    A beautiful eastern coastal destination
+                    known for its ocean and surfing culture.
+                </p>
+
+                <div class="location">
+                    📍 Eastern Province
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="destination">
+
+            <div class="destination-img">
+                🐘
+            </div>
+
+            <div class="destination-info">
+
+                <h3>Yala</h3>
+
+                <p>
+                    Explore one of Sri Lanka's famous wildlife
+                    destinations and natural landscapes.
+                </p>
+
+                <div class="location">
+                    📍 Southern Province
+                </div>
+
+            </div>
+
+        </div>
+
+
+        <div class="destination">
+
+            <div class="destination-img">
+                🍃
+            </div>
+
+            <div class="destination-info">
+
+                <h3>Nuwara Eliya</h3>
+
+                <p>
+                    Experience cool weather, green hills and
+                    beautiful tea-growing landscapes.
+                </p>
+
+                <div class="location">
+                    📍 Central Province
+                </div>
+
+            </div>
+
+        </div>
+
+
+    </div>
+
+</section>
+
+
+<!-- ================= FOOTER ================= -->
+
+<footer>
+
+    <h2>🇱🇰 Discover Sri Lanka</h2>
+
+    <p>
+        Explore • Experience • Remember
+    </p>
+
+    <br>
+
+    <p>
+        © 2026 Discover Sri Lanka
+    </p>
+
+</footer>
+
+
+<!-- ================= MOBILE NAV ================= -->
+
+<div class="bottom-nav">
+
+    <a href="#home">
+        <span>🏠</span>
+        Home
+    </a>
+
+    <a href="#explore">
+        <span>🧭</span>
+        Explore
+    </a>
+
+    <a href="#provinces">
+        <span>🗺️</span>
+        Map
+    </a>
+
+    <a href="#destinations">
+        <span>📍</span>
+        Places
+    </a>
+
+</div>
+
+
+<script>
+
+    /* ==========================================
+       SRI LANKA DATA
+    ========================================== */
+
+    const provinceData = {
+
+        "Central Province": {
+            emoji: "🏔️",
+            description:
+                "ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය, තේ වතු, දිය ඇලි සහ ඓතිහාසික ස්ථාන සඳහා ප්‍රසිද්ධ ප්‍රදේශයකි.",
+            places: [
+                "Kandy",
+                "Nuwara Eliya",
+                "Sigiriya",
+                "Dambulla"
+            ],
+            food: [
+                "Milk Rice",
+                "Sri Lankan Rice & Curry",
+                "Roti"
+            ],
+            culture:
+                "Temple of the Tooth, Kandy Esala Perahera සහ සාම්ප්‍රදායික කලා සංස්කෘතිය."
+        },
+
+        "Eastern Province": {
+            emoji: "🌊",
+            description:
+                "සුන්දර වෙරළ තීරයන්, කලපු සහ විවිධ සංස්කෘතික උරුමයන් සහිත ප්‍රදේශයකි.",
+            places: [
+                "Arugam Bay",
+                "Trincomalee",
+                "Pasikuda",
+                "Batticaloa"
+            ],
+            food: [
+                "Seafood Curry",
+                "Kottu",
+                "Rice & Curry"
+            ],
+            culture:
+                "දෙමළ, මුස්ලිම් සහ සිංහල සංස්කෘතික සම්ප්‍රදායන්ගේ විවිධත්වය දැකිය හැක."
+        },
+
+        "Northern Province": {
+            emoji: "🌴",
+            description:
+                "ශ්‍රී ලංකාවේ උතුරු ප්‍රදේශය ඓතිහාසික ස්ථාන, දූපත් සහ විශේෂ ආහාර සංස්කෘතිය සඳහා ප්‍රසිද්ධය.",
+            places: [
+                "Jaffna",
+                "Delft Island",
+                "Nallur",
+                "Point Pedro"
+            ],
+            food: [
+                "Jaffna Crab Curry",
+                "String Hoppers",
+                "Jaffna Kool"
+            ],
+            culture:
+                "Nallur Kandaswamy Kovil සහ උතුරු ශ්‍රී ලංකාවේ සුවිශේෂී සංස්කෘතික උරුමය."
+        },
+
+        "North Central Province": {
+            emoji: "🏛️",
+            description:
+                "ශ්‍රී ලංකාවේ පැරණි රාජධානි සහ දැවැන්ත වාරිමාර්ග උරුමයන් සඳහා ප්‍රසිද්ධය.",
+            places: [
+                "Anuradhapura",
+                "Polonnaruwa",
+                "Mihintale"
+            ],
+            food: [
+                "Rice & Curry",
+                "Kurakkan Roti",
+                "Kola Mallum"
+            ],
+            culture:
+                "පැරණි අනුරාධපුර හා පොළොන්නරු රාජධානිවල ඓතිහාසික උරුමයන්."
+        },
+
+        "North Western Province": {
+            emoji: "🌾",
+            description:
+                "වෙරළ තීරයන්, ධීවර කර්මාන්තය සහ වයඹ ප්‍රදේශයේ ස්වභාවික සුන්දරත්වය සඳහා ප්‍රසිද්ධය.",
+            places: [
+                "Kalpitiya",
+                "Kurunegala",
+                "Puttalam"
+            ],
+            food: [
+                "Seafood",
+                "Rice & Curry",
+                "Hoppers"
+            ],
+            culture:
+                "පැරණි රාජධානි උරුමයන් සහ වෙරළබඩ සංස්කෘතිය."
+        },
+
+        "Sabaragamuwa Province": {
+            emoji: "🌳",
+            description:
+                "හරිත කඳුකරය, දිය ඇලි සහ ස්වභාවික පරිසරය සඳහා ප්‍රසිද්ධය.",
+            places: [
+                "Ratnapura",
+                "Kitulgala",
+                "Adam's Peak"
+            ],
+            food: [
+                "Rice & Curry",
+                "Hoppers",
+                "Kokis"
+            ],
+            culture:
+                "මැණික් කර්මාන්තය සහ ශ්‍රී පාදස්ථානය ආශ්‍රිත ආගමික උරුමය."
+        },
+
+        "Southern Province": {
+            emoji: "🏝️",
+            description:
+                "සුන්දර වෙරළ තීරයන්, ඓතිහාසික නගර සහ දකුණු වෙරළබඩ සංස්කෘතිය සඳහා ප්‍රසිද්ධය.",
+            places: [
+                "Galle",
+                "Mirissa",
+                "Unawatuna",
+                "Matara"
+            ],
+            food: [
+                "Fish Ambul Thiyal",
+                "Seafood",
+                "Rice & Curry"
+            ],
+            culture:
+                "Galle Fort සහ දකුණු ශ්‍රී ලංකාවේ සුවිශේෂී වෙරළබඩ සංස්කෘතිය."
+        },
+
+        "Uva Province": {
+            emoji: "🍃",
+            description:
+                "කඳුකර භූ දර්ශන, තේ වතු සහ දිය ඇලි සඳහා ප්‍රසිද්ධ සුන්දර පළාතකි.",
+            places: [
+                "Ella",
+                "Badulla",
+                "Haputale",
+                "Diyaluma Falls"
+            ],
+            food: [
+                "Rice & Curry",
+                "Roti",
+                "Hoppers"
+            ],
+            culture:
+                "කඳුකර ජීවන රටාව සහ තේ වගාව ආශ්‍රිත සංස්කෘතිය."
+        },
+
+        "Western Province": {
+            emoji: "🏙️",
+            description:
+                "ශ්‍රී ලංකාවේ ප්‍රධාන නාගරික හා වාණිජ ප්‍රදේශය වන අතර නවීන හා සාම්ප්‍රදායික අත්දැකීම් එකට දැකිය හැක.",
+            places: [
+                "Colombo",
+                "Negombo",
+                "Kalutara",
+                "Mount Lavinia"
+            ],
+            food: [
+                "Kottu",
+                "Hoppers",
+                "Rice & Curry"
+            ],
+            culture:
+                "Colombo නගරයේ විවිධ සංස්කෘතීන්, ආගමික ස්ථාන සහ නවීන නාගරික ජීවන රටාව."
+        }
+
+    };
+
+
+    /* ==========================================
+       DESTINATION DATA
+    ========================================== */
+
+    const destinationData = {
+
+        "Ella": {
+            emoji: "🏔️",
+            province: "Uva Province",
+            description:
+                "කඳුකරයේ සුන්දර දර්ශන, තේ වතු සහ ස්වභාවික පරිසරය සඳහා ප්‍රසිද්ධ ගමනාන්තයකි.",
+            highlights:
+                "Nine Arch Bridge • Little Adam's Peak • Ella Rock"
+        },
+
+        "Mirissa": {
+            emoji: "🏖️",
+            province: "Southern Province",
+            description:
+                "දකුණු වෙරළ තීරයේ සුන්දර වෙරළක් සහ නිස්කලංක නිවර්තන පරිසරයක් සහිත ගමනාන්තයකි.",
+            highlights:
+                "Mirissa Beach • Coconut Tree Hill • Whale Watching"
+        },
+
+        "Sigiriya": {
+            emoji: "🏛️",
+            province: "Central Province",
+            description:
+                "පැරණි ශ්‍රී ලංකාවේ වැදගත් ඓතිහාසික හා පුරාවිද්‍යාත්මක ස්ථානයකි.",
+            highlights:
+                "Sigiriya Rock • Frescoes • Ancient Gardens"
+        },
+
+        "Arugam Bay": {
+            emoji: "🌊",
+            province: "Eastern Province",
+            description:
+                "ශ්‍රී ලංකාවේ නැගෙනහිර වෙරළේ පිහිටි ජනප්‍රිය සංචාරක ගමනාන්තයකි.",
+            highlights:
+                "Beach • Surfing • Lagoon"
+        },
+
+        "Yala": {
+            emoji: "🐘",
+            province: "Southern Province",
+            description:
+                "වනජීවී අත්දැකීම් සඳහා ප්‍රසිද්ධ ශ්‍රී ලංකාවේ ජාතික උද්‍යාන ප්‍රදේශයකි.",
+            highlights:
+                "Elephants • Leopards • Birds"
+        },
+
+        "Nuwara Eliya": {
+            emoji: "🍃",
+            province: "Central Province",
+            description:
+                "සිසිල් දේශගුණය, තේ වතු සහ කඳුකර දර්ශන සඳහා ප්‍රසිද්ධය.",
+            highlights:
+                "Tea Estates • Gregory Lake • Horton Plains"
+        }
+
+    };
+
+
+    /* ==========================================
+       CREATE POPUP
+    ========================================== */
+
+    const popup = document.createElement("div");
+
+    popup.innerHTML = `
+
+        <div id="popupOverlay">
+
+            <div id="infoPopup">
+
+                <button id="closePopup">×</button>
+
+                <div id="popupContent"></div>
+
+            </div>
+
+        </div>
+
+    `;
+
+    document.body.appendChild(popup);
+
+
+    /* ==========================================
+       POPUP CSS
+    ========================================== */
+
+    const popupStyle = document.createElement("style");
+
+    popupStyle.innerHTML = `
+
+        #popupOverlay {
+
+            position: fixed;
+            inset: 0;
+
+            background: rgba(0,0,0,0.65);
+
+            display: none;
+
+            align-items: center;
+            justify-content: center;
+
+            padding: 20px;
+
+            z-index: 1000;
+
+            backdrop-filter: blur(5px);
+
+        }
+
+
+        #infoPopup {
+
+            background: white;
+
+            width: 100%;
+            max-width: 520px;
+
+            max-height: 85vh;
+
+            overflow-y: auto;
+
+            border-radius: 28px;
+
+            padding: 32px;
+
+            position: relative;
+
+            box-shadow:
+                0 25px 70px rgba(0,0,0,0.25);
+
+            animation: popupOpen 0.25s ease;
+
+        }
+
+
+        @keyframes popupOpen {
+
+            from {
+                transform: scale(0.85);
+                opacity: 0;
+            }
+
+            to {
+                transform: scale(1);
+                opacity: 1;
+            }
+
+        }
+
+
+        #closePopup {
+
+            position: absolute;
+
+            right: 18px;
+            top: 15px;
+
+            width: 40px;
+            height: 40px;
+
+            border: none;
+
+            border-radius: 50%;
+
+            background: #edf6f1;
+
+            color: #173b2b;
+
+            font-size: 27px;
+
+            cursor: pointer;
+
+        }
+
+
+        .popupEmoji {
+
+            font-size: 65px;
+
+            text-align: center;
+
+            margin-bottom: 10px;
+
+        }
+
+
+        .popupTitle {
+
+            text-align: center;
+
+            font-size: 28px;
+
+            margin-bottom: 12px;
+
+        }
+
+
+        .popupDescription {
+
+            color: #68776f;
+
+            line-height: 1.7;
+
+            text-align: center;
+
+            margin-bottom: 25px;
+
+        }
+
+
+        .popupSection {
+
+            background: #f3faf6;
+
+            padding: 18px;
+
+            border-radius: 18px;
+
+            margin-top: 12px;
+
+        }
+
+
+        .popupSection h4 {
+
+            margin-bottom: 8px;
+
+        }
+
+
+        .popupSection p {
+
+            color: #65736c;
+
+            line-height: 1.6;
+
+            font-size: 14px;
+
+        }
+
+
+        .placeTag {
+
+            display: inline-block;
+
+            background: white;
+
+            padding: 8px 12px;
+
+            border-radius: 20px;
+
+            margin: 4px;
+
+            font-size: 13px;
+
+            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
+
+        }
+
+    `;
+
+    document.head.appendChild(popupStyle);
+
+
+    /* ==========================================
+       OPEN POPUP
+    ========================================== */
+
+    function openPopup(content) {
+
+        document.getElementById("popupContent").innerHTML =
+            content;
+
+        document.getElementById("popupOverlay").style.display =
+            "flex";
+
+        document.body.style.overflow = "hidden";
+    }
+
+
+    /* ==========================================
+       CLOSE POPUP
+    ========================================== */
+
+    function closePopup() {
+
+        document.getElementById("popupOverlay").style.display =
+            "none";
+
+        document.body.style.overflow = "auto";
+    }
+
+
+    document
+        .getElementById("closePopup")
+        .addEventListener("click", closePopup);
+
+
+    document
+        .getElementById("popupOverlay")
+        .addEventListener("click", function(e) {
+
+            if (e.target.id === "popupOverlay") {
+
+                closePopup();
+
+            }
+
+        });
+
+
+    /* ==========================================
+       PROVINCE CLICK
+    ========================================== */
+
+    const provinces =
+        document.querySelectorAll(".province");
+
+
+    provinces.forEach(function(province) {
+
+        province.addEventListener("click", function() {
+
+            const name =
+                province.querySelector("h3").innerText;
+
+            const data =
+                provinceData[name];
+
+
+            if (!data) return;
+
+
+            const placesHTML =
+                data.places.map(function(place) {
+
+                    return `<span class="placeTag">📍 ${place}</span>`;
+
+                }).join("");
+
+
+            const foodHTML =
+                data.food.map(function(food) {
+
+                    return `<span class="placeTag">🍛 ${food}</span>`;
+
+                }).join("");
+
+
+            openPopup(`
+
+                <div class="popupEmoji">
+                    ${data.emoji}
+                </div>
+
+                <h2 class="popupTitle">
+                    ${name}
+                </h2>
+
+                <p class="popupDescription">
+                    ${data.description}
+                </p>
+
+
+                <div class="popupSection">
+
+                    <h4>📍 Places to Explore</h4>
+
+                    <div>
+                        ${placesHTML}
+                    </div>
+
+                </div>
+
+
+                <div class="popupSection">
+
+                    <h4>🍛 Local Food</h4>
+
+                    <div>
+                        ${foodHTML}
+                    </div>
+
+                </div>
+
+
+                <div class="popupSection">
+
+                    <h4>🎭 Culture & Heritage</h4>
+
+                    <p>
+                        ${data.culture}
+                    </p>
+
+                </div>
+
+            `);
+
+        });
+
+    });
+
+
+    /* ==========================================
+       DESTINATION CLICK
+    ========================================== */
+
+    const destinationCards =
+        document.querySelectorAll(".destination");
+
+
+    destinationCards.forEach(function(card) {
+
+        card.style.cursor = "pointer";
+
+
+        card.addEventListener("click", function() {
+
+            const title =
+                card.querySelector("h3").innerText;
+
+            const data =
+                destinationData[title];
+
+
+            if (!data) return;
+
+
+            openPopup(`
+
+                <div class="popupEmoji">
+                    ${data.emoji}
+                </div>
+
+                <h2 class="popupTitle">
+                    ${title}
+                </h2>
+
+                <p class="popupDescription">
+                    ${data.description}
+                </p>
+
+
+                <div class="popupSection">
+
+                    <h4>📍 Province</h4>
+
+                    <p>
+                        ${data.province}
+                    </p>
+
+                </div>
+
+
+                <div class="popupSection">
+
+                    <h4>✨ Highlights</h4>
+
+                    <p>
+                        ${data.highlights}
+                    </p>
+
+                </div>
+
+            `);
+
+        });
+
+    });
+
+
+    /* ==========================================
+       EXPLORE CATEGORY CLICK
+    ========================================== */
+
+    const categoryCards =
+        document.querySelectorAll(".card");
+
+
+    categoryCards.forEach(function(card) {
+
+        card.addEventListener("click", function() {
+
+            const title =
+                card.querySelector("h3").innerText;
+
+
+            const information = {
+
+                "Mountains":
+                    "ශ්‍රී ලංකාවේ කඳුකර ප්‍රදේශවලට ගොස් සුන්දර කඳු, තේ වතු, දිය ඇලි සහ ස්වභාවික දර්ශන අත්විඳිය හැක.",
+
+                "Beaches":
+                    "ශ්‍රී ලංකාවේ දිගු වෙරළ තීරය නිසා විවිධ සුන්දර වෙරළ ගමනාන්ත සොයාගත හැක.",
+
+                "Food":
+                    "Rice & Curry, Hoppers, Kottu, String Hoppers සහ විවිධ සාම්ප්‍රදායික ආහාර ශ්‍රී ලංකාවේ ආහාර සංස්කෘතියේ කොටසකි.",
+
+                "Wildlife":
+                    "ශ්‍රී ලංකාවේ ජාතික උද්‍යාන සහ ස්වභාවික වාසස්ථාන තුළ විවිධ වනජීවී විශේෂ දැකිය හැක.",
+
+                "Heritage":
+                    "පැරණි රාජධානි, පුරාවිද්‍යාත්මක ස්ථාන, බලකොටු සහ ආගමික ස්ථාන ශ්‍රී ලංකාවේ උරුමයේ වැදගත් කොටස් වේ.",
+
+                "Culture":
+                    "නර්තන, සංගීතය, ආගමික උත්සව, කලා සහ විවිධ ප්‍රජාවන්ගේ සම්ප්‍රදායන් ශ්‍රී ලංකාවේ සංස්කෘතික විවිධත්වය පෙන්වයි."
+
+            };
+
+
+            openPopup(`
+
+                <div class="popupEmoji">
+                    ${title === "Mountains" ? "⛰️" :
+                      title === "Beaches" ? "🏖️" :
+                      title === "Food" ? "🍛" :
+                      title === "Wildlife" ? "🐘" :
+                      title === "Heritage" ? "🏛️" : "🎭"}
+                </div>
+
+                <h2 class="popupTitle">
+                    ${title}
+                </h2>
+
+                <p class="popupDescription">
+                    ${information[title]}
+                </p>
+
+                <div class="popupSection">
+
+                    <h4>🇱🇰 Discover More</h4>
+
+                    <p>
+                        මෙම category එකට අදාළ
+                        Sri Lankan destinations අපි ඉදිරියේදී
+                        තවත් එකතු කරමු.
+                    </p>
+
+                </div>
+
+            `);
+
+        });
+
+    });
+
+
+    /* ==========================================
+       SEARCH
+    ========================================== */
+
+    const searchInput =
+        document.getElementById("searchInput");
+
+
+    searchInput.addEventListener("keyup", function() {
+
+        const searchText =
+            searchInput.value.toLowerCase();
+
+
+        destinationCards.forEach(function(card) {
+
+            const text =
+                card.innerText.toLowerCase();
+
+
+            if (text.includes(searchText)) {
+
+                card.style.display = "block";
+
+            } else {
+
+                card.style.display = "none";
+
+            }
+
+        });
+
+    });
+
+
+    /* ==========================================
+       SMOOTH SCROLL
+    ========================================== */
+
+    document.querySelectorAll("a[href^='#']")
+        .forEach(function(link) {
+
+            link.addEventListener("click", function(e) {
+
+                const target =
+                    document.querySelector(
+                        link.getAttribute("href")
+                    );
+
+                if (target) {
+
+                    e.preventDefault();
+
+                    target.scrollIntoView({
+                        behavior: "smooth"
+                    });
+
+                }
+
+            });
+
+        });
+
+</script>
+
+
+</body>
+</html>
