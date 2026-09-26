@@ -1,0 +1,16 @@
+{
+  "name": "Discover Sri Lanka",
+  "short_name": "DiscoverSL",
+  "description": "An interactive Sri Lankan travel and culture discovery website",
+  "start_url": "/discover-sri-lanka-/",
+  "display": "standalone",
+  "background_color": "#0f172a",
+  "theme_color": "#f59e0b",
+  "icons": [
+    {
+      "src": "https://upload.wikimedia.org/wikipedia/commons/thumb/8/8d/Flag_of_Sri_Lanka.svg/512px-Flag_of_Sri_Lanka.svg.png",
+      "sizes": "512x512",
+      "type": "image/png"
+    }
+  ]
+}
