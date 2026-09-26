@@ -1,1668 +1,3345 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-    <title>Discover Sri Lanka 🇱🇰</title>
-
-    <style>
-
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        body {
-            font-family: Arial, sans-serif;
-            background: #f4faf7;
-            color: #163c2d;
-        }
-
-        /* ================= NAVBAR ================= */
-
-        nav {
-            height: 72px;
-            background: rgba(255,255,255,0.95);
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-            padding: 0 7%;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 15px rgba(0,0,0,0.08);
-        }
-
-        .logo {
-            font-size: 21px;
-            font-weight: bold;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: #173b2b;
-            margin-left: 25px;
-            font-size: 14px;
-        }
-
-        /* ================= HERO ================= */
-
-        .hero {
-            min-height: 620px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-
-            background:
-                linear-gradient(
-                    rgba(0,45,30,0.55),
-                    rgba(0,45,30,0.65)
-                ),
-                url("https://images.unsplash.com/photo-1588598198321-9735fd5247b8?auto=format&fit=crop&w=1600&q=80");
-
-            background-size: cover;
-            background-position: center;
-        }
-
-        .hero-content {
-            color: white;
-            max-width: 850px;
-            padding: 30px;
-        }
-
-        .small-title {
-            letter-spacing: 3px;
-            font-size: 13px;
-            margin-bottom: 18px;
-            opacity: 0.9;
-        }
-
-        .hero h1 {
-            font-size: 64px;
-            margin-bottom: 20px;
-        }
-
-        .hero p {
-            font-size: 19px;
-            line-height: 1.7;
-            margin-bottom: 35px;
-        }
-
-        .explore-btn {
-            display: inline-block;
-            background: white;
-            color: #126943;
-            padding: 15px 32px;
-            border-radius: 40px;
-            text-decoration: none;
-            font-weight: bold;
-            transition: 0.3s;
-        }
-
-        .explore-btn:hover {
-            transform: scale(1.05);
-        }
-
-        /* ================= SECTION ================= */
-
-        section {
-            padding: 80px 7%;
-        }
-
-        .section-title {
-            text-align: center;
-            font-size: 34px;
-            margin-bottom: 12px;
-        }
-
-        .section-subtitle {
-            text-align: center;
-            color: #718078;
-            margin-bottom: 45px;
-        }
-
-        /* ================= CATEGORY CARDS ================= */
-
-        .cards {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .card {
-            background: white;
-            border-radius: 22px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-            transition: 0.3s;
-            cursor: pointer;
-        }
-
-        .card:hover {
-            transform: translateY(-10px);
-            box-shadow: 0 15px 35px rgba(0,0,0,0.12);
-        }
-
-        .card-image {
-            height: 190px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 70px;
-            background: #e4f4eb;
-        }
-
-        .card-content {
-            padding: 25px;
-        }
-
-        .card-content h3 {
-            font-size: 21px;
-            margin-bottom: 10px;
-        }
-
-        .card-content p {
-            color: #718078;
-            line-height: 1.6;
-            font-size: 14px;
-        }
-
-        /* ================= PROVINCES ================= */
-
-        .province-container {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 18px;
-            max-width: 1000px;
-            margin: auto;
-        }
-
-        .province {
-            background: white;
-            padding: 22px;
-            border-radius: 18px;
-            text-align: center;
-            box-shadow: 0 5px 18px rgba(0,0,0,0.06);
-            cursor: pointer;
-            transition: 0.3s;
-        }
-
-        .province:hover {
-            transform: translateY(-6px);
-            background: #e8f7ee;
-        }
-
-        .province span {
-            font-size: 30px;
-            display: block;
-            margin-bottom: 10px;
-        }
-
-        .province h3 {
-            font-size: 16px;
-        }
-
-        /* ================= DESTINATIONS ================= */
-
-        .destination-grid {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 25px;
-        }
-
-        .destination {
-            background: white;
-            border-radius: 22px;
-            overflow: hidden;
-            box-shadow: 0 8px 25px rgba(0,0,0,0.07);
-            transition: 0.3s;
-        }
-
-        .destination:hover {
-            transform: translateY(-8px);
-        }
-
-        .destination-img {
-            height: 210px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 75px;
-            background: #dff1e8;
-        }
-
-        .destination-info {
-            padding: 22px;
-        }
-
-        .destination-info h3 {
-            margin-bottom: 8px;
-        }
-
-        .destination-info p {
-            color: #718078;
-            font-size: 14px;
-        }
-
-        .location {
-            margin-top: 12px;
-            color: #168152;
-            font-size: 13px;
-            font-weight: bold;
-        }
-
-        /* ================= SEARCH ================= */
-
-        .search-box {
-            max-width: 650px;
-            margin: 0 auto 45px;
-            position: relative;
-        }
-
-        .search-box input {
-            width: 100%;
-            padding: 17px 22px;
-            border: none;
-            border-radius: 35px;
-            box-shadow: 0 5px 25px rgba(0,0,0,0.08);
-            outline: none;
-            font-size: 15px;
-        }
-
-        /* ================= FOOTER ================= */
-
-        footer {
-            background: #123c2b;
-            color: white;
-            text-align: center;
-            padding: 40px 20px;
-        }
-
-        footer h2 {
-            margin-bottom: 10px;
-        }
-
-        footer p {
-            opacity: 0.8;
-            font-size: 14px;
-        }
-
-        /* ================= MOBILE APP BAR ================= */
-
-        .bottom-nav {
-            display: none;
-        }
-
-        /* ================= MOBILE ================= */
-
-        @media(max-width:700px) {
-
-            nav {
-                height: 62px;
-                padding: 0 20px;
-            }
-
-            nav a {
-                display: none;
-            }
-
-            .logo {
-                font-size: 18px;
-            }
-
-            .hero {
-                min-height: 570px;
-            }
-
-            .hero h1 {
-                font-size: 42px;
-            }
-
-            .hero p {
-                font-size: 16px;
-            }
-
-            section {
-                padding: 60px 20px;
-            }
-
-            .section-title {
-                font-size: 28px;
-            }
-
-            .cards,
-            .province-container,
-            .destination-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .bottom-nav {
-                display: flex;
-                position: fixed;
-                bottom: 0;
-                left: 0;
-                right: 0;
-                height: 68px;
-                background: rgba(255,255,255,0.96);
-                backdrop-filter: blur(10px);
-                justify-content: space-around;
-                align-items: center;
-                z-index: 200;
-                box-shadow: 0 -3px 20px rgba(0,0,0,0.1);
-            }
-
-            .bottom-nav a {
-                text-decoration: none;
-                color: #587066;
-                text-align: center;
-                font-size: 11px;
-            }
-
-            .bottom-nav span {
-                display: block;
-                font-size: 23px;
-                margin-bottom: 3px;
-            }
-
-            footer {
-                padding-bottom: 100px;
-            }
-        }
-
-    </style>
-
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+<title>Discover Sri Lanka 🇱🇰</title>
+
+<style>
+
+/* =========================================================
+   GLOBAL
+========================================================= */
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+:root{
+    --green:#087f5b;
+    --green-dark:#056044;
+    --green-light:#dff7ed;
+    --green-soft:#effbf6;
+    --white:#ffffff;
+    --black:#17221d;
+    --gray:#6b7771;
+    --light:#f5f8f6;
+    --border:#dfe9e4;
+    --shadow:0 10px 30px rgba(0,0,0,.08);
+    --radius:22px;
+}
+
+body{
+    font-family:Arial,Helvetica,sans-serif;
+    background:var(--light);
+    color:var(--black);
+    min-height:100vh;
+}
+
+button,
+input,
+select{
+    font:inherit;
+}
+
+button{
+    cursor:pointer;
+    border:none;
+}
+
+img{
+    width:100%;
+    display:block;
+}
+
+a{
+    text-decoration:none;
+    color:inherit;
+}
+
+/* =========================================================
+   APP
+========================================================= */
+
+#app{
+    max-width:1100px;
+    margin:auto;
+    min-height:100vh;
+    background:#fff;
+    box-shadow:0 0 50px rgba(0,0,0,.04);
+}
+
+.page{
+    display:none;
+    min-height:100vh;
+    padding-bottom:95px;
+    animation:pageIn .3s ease;
+}
+
+.page.active{
+    display:block;
+}
+
+@keyframes pageIn{
+    from{
+        opacity:0;
+        transform:translateY(8px);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0);
+    }
+}
+
+/* =========================================================
+   TOP BAR
+========================================================= */
+
+.topbar{
+    position:sticky;
+    top:0;
+    z-index:100;
+    height:68px;
+    background:rgba(255,255,255,.95);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid var(--border);
+
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+
+    padding:0 20px;
+}
+
+.top-title{
+    font-size:20px;
+    font-weight:800;
+    color:var(--green-dark);
+}
+
+.top-actions{
+    display:flex;
+    gap:8px;
+}
+
+.icon-btn{
+    width:42px;
+    height:42px;
+    border-radius:50%;
+    background:var(--green-soft);
+    color:var(--green-dark);
+    font-size:20px;
+}
+
+/* =========================================================
+   HOME HERO
+========================================================= */
+
+.hero{
+    min-height:520px;
+    padding:70px 25px 50px;
+
+    display:flex;
+    align-items:center;
+
+    background:
+    linear-gradient(
+        rgba(0,70,45,.63),
+        rgba(0,70,45,.63)
+    ),
+    url("https://commons.wikimedia.org/wiki/Special:FilePath/Sigiriya%20rock%20.%20Sri%20lanka.jpg")
+    center/cover;
+}
+
+.hero-content{
+    max-width:650px;
+    color:white;
+}
+
+.hero-badge{
+    display:inline-block;
+    background:rgba(255,255,255,.18);
+    padding:8px 15px;
+    border-radius:30px;
+    margin-bottom:20px;
+    backdrop-filter:blur(8px);
+}
+
+.hero h1{
+    font-size:clamp(42px,8vw,78px);
+    line-height:.98;
+    margin-bottom:20px;
+}
+
+.hero p{
+    font-size:18px;
+    line-height:1.7;
+    max-width:580px;
+}
+
+.hero-buttons{
+    display:flex;
+    gap:12px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.primary-btn{
+    background:var(--green);
+    color:white;
+    padding:14px 20px;
+    border-radius:14px;
+    font-weight:700;
+}
+
+.primary-btn:hover{
+    background:var(--green-dark);
+}
+
+.secondary-btn{
+    background:white;
+    color:var(--green-dark);
+    padding:14px 20px;
+    border-radius:14px;
+    font-weight:700;
+}
+
+/* =========================================================
+   SECTION
+========================================================= */
+
+.section{
+    padding:35px 20px;
+}
+
+.section-head{
+    display:flex;
+    justify-content:space-between;
+    align-items:end;
+    gap:15px;
+    margin-bottom:20px;
+}
+
+.section-head h2{
+    font-size:28px;
+}
+
+.section-head p{
+    color:var(--gray);
+    margin-top:5px;
+}
+
+/* =========================================================
+   QUICK MENU
+========================================================= */
+
+.quick-grid{
+    display:grid;
+    grid-template-columns:repeat(4,1fr);
+    gap:14px;
+}
+
+.quick-card{
+    padding:22px 15px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:20px;
+    box-shadow:var(--shadow);
+    text-align:center;
+    transition:.25s;
+}
+
+.quick-card:hover{
+    transform:translateY(-4px);
+}
+
+.quick-icon{
+    font-size:35px;
+    margin-bottom:10px;
+}
+
+.quick-card h3{
+    font-size:16px;
+}
+
+.quick-card p{
+    color:var(--gray);
+    font-size:12px;
+    margin-top:5px;
+}
+
+/* =========================================================
+   CARDS
+========================================================= */
+
+.card-grid{
+    display:grid;
+    grid-template-columns:repeat(3,1fr);
+    gap:20px;
+}
+
+.card{
+    background:white;
+    border-radius:var(--radius);
+    overflow:hidden;
+    border:1px solid var(--border);
+    box-shadow:var(--shadow);
+    transition:.25s;
+}
+
+.card:hover{
+    transform:translateY(-5px);
+}
+
+.card-img{
+    height:210px;
+    object-fit:cover;
+}
+
+.card-body{
+    padding:18px;
+}
+
+.card-body h3{
+    font-size:20px;
+    margin-bottom:7px;
+}
+
+.card-body p{
+    color:var(--gray);
+    line-height:1.6;
+    font-size:14px;
+}
+
+.card-actions{
+    display:flex;
+    gap:8px;
+    margin-top:15px;
+    flex-wrap:wrap;
+}
+
+.small-btn{
+    padding:10px 13px;
+    border-radius:11px;
+    background:var(--green-light);
+    color:var(--green-dark);
+    font-weight:700;
+    font-size:13px;
+}
+
+.small-btn.green{
+    background:var(--green);
+    color:white;
+}
+
+.small-btn.outline{
+    background:white;
+    border:1px solid var(--border);
+}
+
+/* =========================================================
+   SEARCH
+========================================================= */
+
+.search-box{
+    display:flex;
+    gap:10px;
+    margin-bottom:20px;
+}
+
+.search-box input{
+    flex:1;
+    padding:15px 17px;
+    border:1px solid var(--border);
+    border-radius:15px;
+    outline:none;
+    background:white;
+}
+
+.search-box input:focus{
+    border-color:var(--green);
+}
+
+.filter-row{
+    display:flex;
+    gap:10px;
+    overflow-x:auto;
+    padding-bottom:10px;
+}
+
+.filter{
+    flex:none;
+    padding:10px 15px;
+    border-radius:30px;
+    background:var(--green-soft);
+    color:var(--green-dark);
+}
+
+.filter.active{
+    background:var(--green);
+    color:white;
+}
+
+/* =========================================================
+   DETAIL PAGE
+========================================================= */
+
+.detail-hero{
+    position:relative;
+}
+
+.detail-hero img{
+    height:380px;
+    object-fit:cover;
+}
+
+.detail-overlay{
+    position:absolute;
+    inset:0;
+    background:linear-gradient(transparent,rgba(0,0,0,.75));
+}
+
+.detail-title{
+    position:absolute;
+    bottom:25px;
+    left:22px;
+    right:22px;
+    color:white;
+}
+
+.detail-title h1{
+    font-size:40px;
+}
+
+.detail-title p{
+    margin-top:6px;
+}
+
+.detail-content{
+    padding:25px 20px;
+}
+
+.info-grid{
+    display:grid;
+    grid-template-columns:repeat(2,1fr);
+    gap:15px;
+    margin:20px 0;
+}
+
+.info-box{
+    background:var(--green-soft);
+    padding:18px;
+    border-radius:18px;
+}
+
+.info-box strong{
+    display:block;
+    color:var(--green-dark);
+    margin-bottom:5px;
+}
+
+.detail-section{
+    margin-top:30px;
+}
+
+.detail-section h2{
+    margin-bottom:10px;
+}
+
+.detail-section p{
+    color:#56635d;
+    line-height:1.8;
+}
+
+/* =========================================================
+   PLANNER
+========================================================= */
+
+.planner-box{
+    max-width:700px;
+    margin:auto;
+    background:white;
+    padding:25px;
+    border-radius:25px;
+    box-shadow:var(--shadow);
+    border:1px solid var(--border);
+}
+
+.form-group{
+    margin-bottom:18px;
+}
+
+.form-group label{
+    display:block;
+    margin-bottom:8px;
+    font-weight:700;
+}
+
+.form-group input,
+.form-group select{
+    width:100%;
+    padding:14px;
+    border:1px solid var(--border);
+    border-radius:13px;
+    outline:none;
+}
+
+.planner-result{
+    margin-top:25px;
+    background:var(--green-soft);
+    padding:22px;
+    border-radius:20px;
+    display:none;
+}
+
+.budget-line{
+    display:flex;
+    justify-content:space-between;
+    padding:9px 0;
+    border-bottom:1px solid rgba(0,0,0,.08);
+}
+
+/* =========================================================
+   PACKING
+========================================================= */
+
+.packing-list{
+    display:grid;
+    gap:10px;
+}
+
+.pack-item{
+    display:flex;
+    align-items:center;
+    gap:12px;
+    padding:15px;
+    background:white;
+    border:1px solid var(--border);
+    border-radius:15px;
+}
+
+.pack-item input{
+    width:20px;
+    height:20px;
+    accent-color:var(--green);
+}
+
+.pack-item.done span{
+    text-decoration:line-through;
+    color:#999;
+}
+
+/* =========================================================
+   CULTURE / WEATHER
+========================================================= */
+
+.feature-box{
+    padding:25px;
+    border-radius:22px;
+    background:var(--green);
+    color:white;
+    margin-bottom:18px;
+}
+
+.feature-box h2{
+    margin-bottom:10px;
+}
+
+.feature-box p{
+    line-height:1.7;
+}
+
+.white-box{
+    background:white;
+    padding:22px;
+    border-radius:20px;
+    border:1px solid var(--border);
+    margin-bottom:15px;
+}
+
+.white-box h3{
+    margin-bottom:8px;
+}
+
+.white-box p{
+    color:var(--gray);
+    line-height:1.7;
+}
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+.empty{
+    text-align:center;
+    padding:70px 20px;
+    color:var(--gray);
+}
+
+.empty-icon{
+    font-size:55px;
+    margin-bottom:15px;
+}
+
+/* =========================================================
+   BOTTOM NAV
+========================================================= */
+
+.bottom-nav{
+    position:fixed;
+    bottom:0;
+    left:50%;
+    transform:translateX(-50%);
+    width:min(1100px,100%);
+    height:72px;
+    background:rgba(255,255,255,.97);
+    backdrop-filter:blur(15px);
+    border-top:1px solid var(--border);
+
+    display:grid;
+    grid-template-columns:repeat(5,1fr);
+
+    z-index:200;
+}
+
+.nav-item{
+    display:flex;
+    flex-direction:column;
+    align-items:center;
+    justify-content:center;
+    gap:4px;
+
+    background:none;
+    color:#7a857f;
+    font-size:11px;
+}
+
+.nav-item span:first-child{
+    font-size:22px;
+}
+
+.nav-item.active{
+    color:var(--green);
+    font-weight:700;
+}
+
+/* =========================================================
+   DARK MODE
+========================================================= */
+
+body.dark{
+    --white:#15201b;
+    --black:#f2f6f4;
+    --light:#0c1411;
+    --border:#263a31;
+    --green-soft:#17372c;
+}
+
+body.dark #app,
+body.dark .topbar,
+body.dark .bottom-nav,
+body.dark .card,
+body.dark .planner-box,
+body.dark .white-box,
+body.dark .pack-item,
+body.dark .search-box input{
+    background:#15201b;
+    color:#f2f6f4;
+}
+
+body.dark .card-body p,
+body.dark .detail-section p,
+body.dark .white-box p{
+    color:#aebbb4;
+}
+
+body.dark .topbar{
+    background:rgba(21,32,27,.95);
+}
+
+body.dark .bottom-nav{
+    background:rgba(21,32,27,.97);
+}
+
+/* =========================================================
+   MOBILE
+========================================================= */
+
+@media(max-width:800px){
+
+    .card-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .quick-grid{
+        grid-template-columns:repeat(2,1fr);
+    }
+
+    .hero{
+        min-height:500px;
+    }
+
+}
+
+@media(max-width:550px){
+
+    .card-grid{
+        grid-template-columns:1fr;
+    }
+
+    .hero{
+        padding:55px 20px;
+    }
+
+    .hero h1{
+        font-size:45px;
+    }
+
+    .section{
+        padding:28px 15px;
+    }
+
+    .detail-hero img{
+        height:300px;
+    }
+
+    .detail-title h1{
+        font-size:30px;
+    }
+
+    .info-grid{
+        grid-template-columns:1fr;
+    }
+
+}
+
+/* =========================================================
+   LOADING
+========================================================= */
+
+.page-loading{
+    position:fixed;
+    inset:0;
+    background:white;
+    z-index:1000;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    flex-direction:column;
+    gap:15px;
+}
+
+.loader{
+    width:45px;
+    height:45px;
+    border:4px solid #dceee7;
+    border-top-color:var(--green);
+    border-radius:50%;
+    animation:spin 1s linear infinite;
+}
+
+@keyframes spin{
+    to{transform:rotate(360deg)}
+}
+
+</style>
 </head>
-
 
 <body>
 
+<div class="page-loading" id="loading">
+    <div style="font-size:45px">🇱🇰</div>
+    <strong>Discover Sri Lanka</strong>
+    <div class="loader"></div>
+</div>
 
-<!-- ================= NAVIGATION ================= -->
+<div id="app">
 
-<nav>
+<!-- =====================================================
+     HOME
+===================================================== -->
 
-    <div class="logo">
-        🇱🇰 Discover Sri Lanka
+<section class="page active" id="page-home">
+
+    <header class="topbar">
+        <div class="top-title">Discover Sri Lanka 🇱🇰</div>
+
+        <div class="top-actions">
+            <button class="icon-btn" onclick="toggleDark()">🌙</button>
+            <button class="icon-btn" onclick="goTo('search')">🔍</button>
+        </div>
+    </header>
+
+    <div class="hero">
+
+        <div class="hero-content">
+
+            <span class="hero-badge">
+                🌴 One Island • Many Worlds
+            </span>
+
+            <h1>
+                Discover<br>
+                Sri Lanka
+            </h1>
+
+            <p>
+                Explore beautiful destinations, discover delicious
+                Sri Lankan food, learn about culture and plan your
+                perfect journey.
+            </p>
+
+            <div class="hero-buttons">
+
+                <button class="primary-btn"
+                        onclick="goTo('places')">
+                    🗺️ Explore Places
+                </button>
+
+                <button class="secondary-btn"
+                        onclick="goTo('planner')">
+                    ✈️ Plan My Trip
+                </button>
+
+            </div>
+
+        </div>
+
     </div>
 
-    <div>
-        <a href="#home">Home</a>
-        <a href="#explore">Explore</a>
-        <a href="#provinces">Provinces</a>
-        <a href="#destinations">Places</a>
-    </div>
+
+    <section class="section">
+
+        <div class="section-head">
+            <div>
+                <h2>Explore</h2>
+                <p>Choose what you want to discover.</p>
+            </div>
+        </div>
+
+        <div class="quick-grid">
+
+            <button class="quick-card"
+                    onclick="goTo('places')">
+                <div class="quick-icon">🏝️</div>
+                <h3>Places</h3>
+                <p>Explore destinations</p>
+            </button>
+
+            <button class="quick-card"
+                    onclick="goTo('food')">
+                <div class="quick-icon">🍛</div>
+                <h3>Food</h3>
+                <p>Taste Sri Lanka</p>
+            </button>
+
+            <button class="quick-card"
+                    onclick="goTo('culture')">
+                <div class="quick-icon">🎭</div>
+                <h3>Culture</h3>
+                <p>Learn our heritage</p>
+            </button>
+
+            <button class="quick-card"
+                    onclick="goTo('planner')">
+                <div class="quick-icon">🧳</div>
+                <h3>Plan</h3>
+                <p>Create your trip</p>
+            </button>
+
+        </div>
+
+    </section>
+
+
+    <section class="section">
+
+        <div class="section-head">
+            <div>
+                <h2>Popular Places</h2>
+                <p>Start your Sri Lankan adventure.</p>
+            </div>
+
+            <button class="small-btn"
+                    onclick="goTo('places')">
+                View all →
+            </button>
+        </div>
+
+        <div class="card-grid" id="homePlaces"></div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     PLACES
+===================================================== -->
+
+<section class="page" id="page-places">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Explore Places</div>
+
+        <button class="icon-btn"
+                onclick="goTo('search')">🔍</button>
+
+    </header>
+
+    <section class="section">
+
+        <div class="section-head">
+            <div>
+                <h2>Destinations 🗺️</h2>
+                <p>Discover amazing places around Sri Lanka.</p>
+            </div>
+        </div>
+
+        <div class="search-box">
+            <input
+                id="placeSearch"
+                type="text"
+                placeholder="Search places..."
+                oninput="renderPlaces()">
+        </div>
+
+        <div class="filter-row">
+
+            <button class="filter active"
+                    onclick="filterPlaces('all',this)">
+                All
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlaces('heritage',this)">
+                🏛️ Heritage
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlaces('beach',this)">
+                🏖️ Beach
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlaces('nature',this)">
+                🌿 Nature
+            </button>
+
+            <button class="filter"
+                    onclick="filterPlaces('hill',this)">
+                ⛰️ Hill Country
+            </button>
+
+        </div>
+
+        <br>
+
+        <div class="card-grid" id="placesGrid"></div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     DESTINATION DETAIL
+===================================================== -->
+
+<section class="page" id="page-place-detail">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Destination</div>
+
+        <button class="icon-btn"
+                onclick="toggleFavoriteCurrent()">♡</button>
+
+    </header>
+
+    <div id="placeDetail"></div>
+
+</section>
+
+
+<!-- =====================================================
+     FOOD
+===================================================== -->
+
+<section class="page" id="page-food">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Sri Lankan Food 🍛</div>
+
+        <button class="icon-btn"
+                onclick="goTo('search')">🔍</button>
+
+    </header>
+
+    <section class="section">
+
+        <div class="feature-box">
+
+            <h2>Taste Sri Lanka 🇱🇰</h2>
+
+            <p>
+                Sri Lankan cuisine includes rice and curry,
+                hoppers, string hoppers, pittu, kottu, lamprais,
+                seafood and many traditional sweets.
+            </p>
+
+        </div>
+
+        <div class="card-grid" id="foodGrid"></div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     FOOD DETAIL
+===================================================== -->
+
+<section class="page" id="page-food-detail">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Food</div>
+
+    </header>
+
+    <div id="foodDetail"></div>
+
+</section>
+
+
+<!-- =====================================================
+     PLANNER
+===================================================== -->
+
+<section class="page" id="page-planner">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Trip Planner ✈️</div>
+
+        <button class="icon-btn"
+                onclick="goTo('packing')">🧳</button>
+
+    </header>
+
+    <section class="section">
+
+        <div class="planner-box">
+
+            <h2>Plan Your Trip</h2>
+
+            <p style="color:#6b7771;margin:8px 0 25px;">
+                Create a simple trip plan based on your destination,
+                days, people and available budget.
+            </p>
+
+
+            <div class="form-group">
+
+                <label>📍 Destination</label>
+
+                <select id="planDestination">
+
+                    <option value="">Choose destination</option>
+
+                </select>
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>📅 Number of days</label>
+
+                <input
+                    id="planDays"
+                    type="number"
+                    min="1"
+                    max="30"
+                    value="3">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>👥 Number of people</label>
+
+                <input
+                    id="planPeople"
+                    type="number"
+                    min="1"
+                    max="20"
+                    value="1">
+
+            </div>
+
+
+            <div class="form-group">
+
+                <label>💰 Available budget (LKR)</label>
+
+                <input
+                    id="planBudget"
+                    type="number"
+                    min="0"
+                    value="50000">
+
+            </div>
+
+
+            <button class="primary-btn"
+                    style="width:100%;"
+                    onclick="generatePlan()">
+
+                ✨ Generate My Trip
+
+            </button>
+
+
+            <div class="planner-result"
+                 id="plannerResult">
+
+            </div>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     PACKING
+===================================================== -->
+
+<section class="page" id="page-packing">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Packing List 🧳</div>
+
+        <button class="icon-btn"
+                onclick="clearPacking()">↻</button>
+
+    </header>
+
+    <section class="section">
+
+        <div class="feature-box">
+
+            <h2>Essential Packing List</h2>
+
+            <p>
+                Tick each item when you have packed it.
+            </p>
+
+        </div>
+
+        <div class="packing-list"
+             id="packingList">
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     CULTURE
+===================================================== -->
+
+<section class="page" id="page-culture">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Culture & Heritage</div>
+
+    </header>
+
+    <section class="section">
+
+        <div class="feature-box">
+
+            <h2>🇱🇰 A Rich Cultural Heritage</h2>
+
+            <p>
+                Sri Lanka has a long history and a diverse cultural
+                heritage influenced by different communities and
+                traditions.
+            </p>
+
+        </div>
+
+
+        <div class="white-box">
+
+            <h3>🏛️ Ancient Heritage</h3>
+
+            <p>
+                Ancient cities such as Anuradhapura and Polonnaruwa,
+                together with places such as Sigiriya and Dambulla,
+                are important parts of Sri Lanka's heritage.
+            </p>
+
+        </div>
+
+
+        <div class="white-box">
+
+            <h3>🛕 Religious Heritage</h3>
+
+            <p>
+                Buddhist, Hindu, Islamic and Christian traditions
+                contribute to Sri Lanka's diverse cultural landscape.
+            </p>
+
+        </div>
+
+
+        <div class="white-box">
+
+            <h3>🎉 Festivals</h3>
+
+            <p>
+                Sri Lanka celebrates many cultural and religious
+                festivals throughout the year.
+            </p>
+
+        </div>
+
+
+        <div class="white-box">
+
+            <h3>💃 Traditional Arts</h3>
+
+            <p>
+                Kandyan dancing, traditional drumming, handicrafts
+                and other artistic traditions are important parts
+                of Sri Lankan culture.
+            </p>
+
+        </div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     WEATHER
+===================================================== -->
+
+<section class="page" id="page-weather">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Weather Guide ☀️</div>
+
+    </header>
+
+    <section class="section">
+
+        <div class="feature-box">
+
+            <h2>🌴 Sri Lanka's Tropical Climate</h2>
+
+            <p>
+                Weather can vary between different regions of the
+                island, so check the local forecast before travelling.
+            </p>
+
+        </div>
+
+
+        <div class="white-box">
+
+            <h3>🌧️ Southwest Monsoon</h3>
+
+            <p>
+                Generally affects the southwest areas during
+                May–September.
+            </p>
+
+        </div>
+
+
+        <div class="white-box">
+
+            <h3>🌦️ Second Inter-monsoon</h3>
+
+            <p>
+                October–November can bring changing weather across
+                different parts of the island.
+            </p>
+
+        </div>
+
+
+        <div class="white-box">
+
+            <h3>☀️ Northeast Monsoon</h3>
+
+            <p>
+                Generally affects northeastern areas during
+                December–February.
+            </p>
+
+        </div>
+
+
+        <button class="primary-btn"
+                style="width:100%;margin-top:10px;"
+                onclick="openGoogle('Sri Lanka weather forecast')">
+
+            🔎 Check Current Weather
+
+        </button>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     FAVORITES
+===================================================== -->
+
+<section class="page" id="page-favorites">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">My Favorites ❤️</div>
+
+    </header>
+
+    <section class="section">
+
+        <div id="favoritesGrid"></div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     SEARCH
+===================================================== -->
+
+<section class="page" id="page-search">
+
+    <header class="topbar">
+
+        <button class="icon-btn"
+                onclick="goBack()">←</button>
+
+        <div class="top-title">Search 🔍</div>
+
+    </header>
+
+    <section class="section">
+
+        <div class="search-box">
+
+            <input
+                id="globalSearch"
+                type="text"
+                placeholder="Search Sri Lanka..."
+                oninput="globalSearch()">
+
+        </div>
+
+        <div id="searchResults"></div>
+
+    </section>
+
+</section>
+
+
+<!-- =====================================================
+     BOTTOM NAVIGATION
+===================================================== -->
+
+<nav class="bottom-nav">
+
+    <button class="nav-item active"
+            data-page="home"
+            onclick="goTo('home')">
+
+        <span>🏠</span>
+        <span>Home</span>
+
+    </button>
+
+
+    <button class="nav-item"
+            data-page="places"
+            onclick="goTo('places')">
+
+        <span>🗺️</span>
+        <span>Explore</span>
+
+    </button>
+
+
+    <button class="nav-item"
+            data-page="food"
+            onclick="goTo('food')">
+
+        <span>🍛</span>
+        <span>Food</span>
+
+    </button>
+
+
+    <button class="nav-item"
+            data-page="planner"
+            onclick="goTo('planner')">
+
+        <span>✈️</span>
+        <span>Plan</span>
+
+    </button>
+
+
+    <button class="nav-item"
+            data-page="favorites"
+            onclick="goTo('favorites')">
+
+        <span>❤️</span>
+        <span>Saved</span>
+
+    </button>
 
 </nav>
-
-
-<!-- ================= HERO ================= -->
-
-<section class="hero" id="home">
-
-    <div class="hero-content">
-
-        <div class="small-title">
-            THE PEARL OF THE INDIAN OCEAN
-        </div>
-
-        <h1>
-            Discover Sri Lanka 🇱🇰
-        </h1>
-
-        <p>
-            Explore breathtaking places, delicious food,
-            ancient heritage, rich culture and unforgettable
-            adventures across the beautiful island of Sri Lanka.
-        </p>
-
-        <a href="#explore" class="explore-btn">
-            Start Exploring →
-        </a>
-
-    </div>
-
-</section>
-
-
-<!-- ================= EXPLORE ================= -->
-
-<section id="explore">
-
-    <h2 class="section-title">
-        Explore Sri Lanka 🌴
-    </h2>
-
-    <p class="section-subtitle">
-        Discover the many sides of our beautiful island.
-    </p>
-
-
-    <div class="cards">
-
-
-        <div class="card">
-
-            <div class="card-image">
-                ⛰️
-            </div>
-
-            <div class="card-content">
-
-                <h3>Mountains</h3>
-
-                <p>
-                    Discover misty mountains, waterfalls,
-                    tea plantations and beautiful highlands.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-image">
-                🏖️
-            </div>
-
-            <div class="card-content">
-
-                <h3>Beaches</h3>
-
-                <p>
-                    Explore golden beaches, tropical coastlines
-                    and the beautiful Indian Ocean.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-image">
-                🍛
-            </div>
-
-            <div class="card-content">
-
-                <h3>Food</h3>
-
-                <p>
-                    Discover Sri Lankan rice and curry,
-                    traditional sweets and local flavours.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-image">
-                🐘
-            </div>
-
-            <div class="card-content">
-
-                <h3>Wildlife</h3>
-
-                <p>
-                    Explore Sri Lanka's amazing wildlife,
-                    national parks and natural habitats.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-image">
-                🏛️
-            </div>
-
-            <div class="card-content">
-
-                <h3>Heritage</h3>
-
-                <p>
-                    Step into Sri Lanka's ancient history,
-                    temples, kingdoms and archaeological sites.
-                </p>
-
-            </div>
-
-        </div>
-
-
-        <div class="card">
-
-            <div class="card-image">
-                🎭
-            </div>
-
-            <div class="card-content">
-
-                <h3>Culture</h3>
-
-                <p>
-                    Experience traditional dance, festivals,
-                    arts and the diverse culture of Sri Lanka.
-                </p>
-
-            </div>
-
-        </div>
-
-    </div>
-
-</section>
-
-
-<!-- ================= PROVINCES ================= -->
-
-<section id="provinces">
-
-    <h2 class="section-title">
-        Explore by Province 🗺️
-    </h2>
-
-    <p class="section-subtitle">
-        Choose a province to discover what makes it special.
-    </p>
-
-
-    <div class="province-container">
-
-
-        <div class="province">
-            <span>🌿</span>
-            <h3>Central Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🌊</span>
-            <h3>Eastern Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🌴</span>
-            <h3>Northern Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🏝️</span>
-            <h3>North Central Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🌾</span>
-            <h3>North Western Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🌳</span>
-            <h3>Sabaragamuwa Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🌅</span>
-            <h3>Southern Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🏙️</span>
-            <h3>Uva Province</h3>
-        </div>
-
-
-        <div class="province">
-            <span>🌇</span>
-            <h3>Western Province</h3>
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- ================= DESTINATIONS ================= -->
-
-<section id="destinations">
-
-    <h2 class="section-title">
-        Popular Destinations 📍
-    </h2>
-
-    <p class="section-subtitle">
-        A glimpse of some amazing places to discover.
-    </p>
-
-
-    <div class="search-box">
-
-        <input
-            type="text"
-            placeholder="🔎 Search destinations..."
-            id="searchInput"
-        >
-
-    </div>
-
-
-    <div class="destination-grid" id="destinationGrid">
-
-
-        <div class="destination">
-
-            <div class="destination-img">
-                🏔️
-            </div>
-
-            <div class="destination-info">
-
-                <h3>Ella</h3>
-
-                <p>
-                    A beautiful mountain destination surrounded
-                    by green hills and tea plantations.
-                </p>
-
-                <div class="location">
-                    📍 Uva Province
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="destination">
-
-            <div class="destination-img">
-                🏖️
-            </div>
-
-            <div class="destination-info">
-
-                <h3>Mirissa</h3>
-
-                <p>
-                    A famous coastal destination with beautiful
-                    beaches and a tropical atmosphere.
-                </p>
-
-                <div class="location">
-                    📍 Southern Province
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="destination">
-
-            <div class="destination-img">
-                🏛️
-            </div>
-
-            <div class="destination-info">
-
-                <h3>Sigiriya</h3>
-
-                <p>
-                    Discover the ancient rock fortress and
-                    one of Sri Lanka's famous heritage sites.
-                </p>
-
-                <div class="location">
-                    📍 Central Province
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="destination">
-
-            <div class="destination-img">
-                🌊
-            </div>
-
-            <div class="destination-info">
-
-                <h3>Arugam Bay</h3>
-
-                <p>
-                    A beautiful eastern coastal destination
-                    known for its ocean and surfing culture.
-                </p>
-
-                <div class="location">
-                    📍 Eastern Province
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="destination">
-
-            <div class="destination-img">
-                🐘
-            </div>
-
-            <div class="destination-info">
-
-                <h3>Yala</h3>
-
-                <p>
-                    Explore one of Sri Lanka's famous wildlife
-                    destinations and natural landscapes.
-                </p>
-
-                <div class="location">
-                    📍 Southern Province
-                </div>
-
-            </div>
-
-        </div>
-
-
-        <div class="destination">
-
-            <div class="destination-img">
-                🍃
-            </div>
-
-            <div class="destination-info">
-
-                <h3>Nuwara Eliya</h3>
-
-                <p>
-                    Experience cool weather, green hills and
-                    beautiful tea-growing landscapes.
-                </p>
-
-                <div class="location">
-                    📍 Central Province
-                </div>
-
-            </div>
-
-        </div>
-
-
-    </div>
-
-</section>
-
-
-<!-- ================= FOOTER ================= -->
-
-<footer>
-
-    <h2>🇱🇰 Discover Sri Lanka</h2>
-
-    <p>
-        Explore • Experience • Remember
-    </p>
-
-    <br>
-
-    <p>
-        © 2026 Discover Sri Lanka
-    </p>
-
-</footer>
-
-
-<!-- ================= MOBILE NAV ================= -->
-
-<div class="bottom-nav">
-
-    <a href="#home">
-        <span>🏠</span>
-        Home
-    </a>
-
-    <a href="#explore">
-        <span>🧭</span>
-        Explore
-    </a>
-
-    <a href="#provinces">
-        <span>🗺️</span>
-        Map
-    </a>
-
-    <a href="#destinations">
-        <span>📍</span>
-        Places
-    </a>
 
 </div>
 
 
 <script>
 
-    /* ==========================================
-       SRI LANKA DATA
-    ========================================== */
+/* =========================================================
+   DESTINATION DATA
+========================================================= */
 
-    const provinceData = {
+const places = [
 
-        "Central Province": {
-            emoji: "🏔️",
-            description:
-                "ශ්‍රී ලංකාවේ මධ්‍යම කඳුකරය, තේ වතු, දිය ඇලි සහ ඓතිහාසික ස්ථාන සඳහා ප්‍රසිද්ධ ප්‍රදේශයකි.",
-            places: [
-                "Kandy",
-                "Nuwara Eliya",
-                "Sigiriya",
-                "Dambulla"
-            ],
-            food: [
-                "Milk Rice",
-                "Sri Lankan Rice & Curry",
-                "Roti"
-            ],
-            culture:
-                "Temple of the Tooth, Kandy Esala Perahera සහ සාම්ප්‍රදායික කලා සංස්කෘතිය."
-        },
+{
+    id:"sigiriya",
+    name:"Sigiriya",
+    category:"heritage",
+    location:"Matale District",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Sigiriya%20rock%20.%20Sri%20lanka.jpg",
+    short:"The famous Lion Rock and ancient rock fortress.",
+    description:
+    "Sigiriya is one of Sri Lanka's most famous historical attractions. The ancient rock fortress rises dramatically above the surrounding landscape and is known for its archaeological remains, gardens and historic frescoes.",
+    weather:"Warm and tropical",
+    food:"Rice & curry, tropical fruits",
+    culture:"Ancient Sri Lankan heritage",
+    safety:"Carry water, use sun protection and follow site rules.",
+    bring:"Water bottle, comfortable shoes, hat and sun protection"
+},
 
-        "Eastern Province": {
-            emoji: "🌊",
-            description:
-                "සුන්දර වෙරළ තීරයන්, කලපු සහ විවිධ සංස්කෘතික උරුමයන් සහිත ප්‍රදේශයකි.",
-            places: [
-                "Arugam Bay",
-                "Trincomalee",
-                "Pasikuda",
-                "Batticaloa"
-            ],
-            food: [
-                "Seafood Curry",
-                "Kottu",
-                "Rice & Curry"
-            ],
-            culture:
-                "දෙමළ, මුස්ලිම් සහ සිංහල සංස්කෘතික සම්ප්‍රදායන්ගේ විවිධත්වය දැකිය හැක."
-        },
+{
+    id:"kandy",
+    name:"Kandy",
+    category:"heritage",
+    location:"Central Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Temple%20of%20the%20Tooth%2C%20Kandy.jpg",
+    short:"A cultural city surrounded by beautiful hills.",
+    description:
+    "Kandy is a major cultural destination in the central hills. The city is famous for the Temple of the Tooth, Kandy Lake and its cultural traditions.",
+    weather:"Cooler than many lowland areas",
+    food:"Rice & curry, hoppers, sweets",
+    culture:"Kandyan culture and traditions",
+    safety:"Respect religious customs when visiting temples.",
+    bring:"Comfortable clothing, umbrella and walking shoes"
+},
 
-        "Northern Province": {
-            emoji: "🌴",
-            description:
-                "ශ්‍රී ලංකාවේ උතුරු ප්‍රදේශය ඓතිහාසික ස්ථාන, දූපත් සහ විශේෂ ආහාර සංස්කෘතිය සඳහා ප්‍රසිද්ධය.",
-            places: [
-                "Jaffna",
-                "Delft Island",
-                "Nallur",
-                "Point Pedro"
-            ],
-            food: [
-                "Jaffna Crab Curry",
-                "String Hoppers",
-                "Jaffna Kool"
-            ],
-            culture:
-                "Nallur Kandaswamy Kovil සහ උතුරු ශ්‍රී ලංකාවේ සුවිශේෂී සංස්කෘතික උරුමය."
-        },
+{
+    id:"galle",
+    name:"Galle Fort",
+    category:"heritage",
+    location:"Southern Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Galle%20Fort.jpg",
+    short:"Historic fortification beside the Indian Ocean.",
+    description:
+    "Galle Fort is a historic coastal fortification with colonial-era architecture, narrow streets, shops, cafes and ocean views.",
+    weather:"Warm and coastal",
+    food:"Seafood, short eats and local dishes",
+    culture:"Colonial and Sri Lankan heritage",
+    safety:"Stay hydrated in hot weather.",
+    bring:"Hat, water and comfortable shoes"
+},
 
-        "North Central Province": {
-            emoji: "🏛️",
-            description:
-                "ශ්‍රී ලංකාවේ පැරණි රාජධානි සහ දැවැන්ත වාරිමාර්ග උරුමයන් සඳහා ප්‍රසිද්ධය.",
-            places: [
-                "Anuradhapura",
-                "Polonnaruwa",
-                "Mihintale"
-            ],
-            food: [
-                "Rice & Curry",
-                "Kurakkan Roti",
-                "Kola Mallum"
-            ],
-            culture:
-                "පැරණි අනුරාධපුර හා පොළොන්නරු රාජධානිවල ඓතිහාසික උරුමයන්."
-        },
+{
+    id:"mirissa",
+    name:"Mirissa",
+    category:"beach",
+    location:"Southern Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Mirissa%20Beach.jpg",
+    short:"A beautiful tropical beach destination.",
+    description:
+    "Mirissa is a popular coastal destination known for its sandy beach, tropical scenery and relaxed atmosphere.",
+    weather:"Warm and tropical",
+    food:"Seafood, rice & curry and fruit",
+    culture:"Southern coastal culture",
+    safety:"Follow local beach and sea safety guidance.",
+    bring:"Sun protection, water and suitable beach clothing"
+},
 
-        "North Western Province": {
-            emoji: "🌾",
-            description:
-                "වෙරළ තීරයන්, ධීවර කර්මාන්තය සහ වයඹ ප්‍රදේශයේ ස්වභාවික සුන්දරත්වය සඳහා ප්‍රසිද්ධය.",
-            places: [
-                "Kalpitiya",
-                "Kurunegala",
-                "Puttalam"
-            ],
-            food: [
-                "Seafood",
-                "Rice & Curry",
-                "Hoppers"
-            ],
-            culture:
-                "පැරණි රාජධානි උරුමයන් සහ වෙරළබඩ සංස්කෘතිය."
-        },
+{
+    id:"ella",
+    name:"Ella",
+    category:"hill",
+    location:"Uva Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Ella%2CSri%20Lanka.jpg",
+    short:"Misty mountains, tea country and scenic landscapes.",
+    description:
+    "Ella is surrounded by mountains, tea plantations and beautiful scenery. It is a popular destination for travellers interested in nature and hiking.",
+    weather:"Cooler hill-country climate",
+    food:"Rice & curry, roti and tea",
+    culture:"Tea-country traditions",
+    safety:"Take care on steep trails and check weather conditions.",
+    bring:"Walking shoes, light jacket and rain protection"
+},
 
-        "Sabaragamuwa Province": {
-            emoji: "🌳",
-            description:
-                "හරිත කඳුකරය, දිය ඇලි සහ ස්වභාවික පරිසරය සඳහා ප්‍රසිද්ධය.",
-            places: [
-                "Ratnapura",
-                "Kitulgala",
-                "Adam's Peak"
-            ],
-            food: [
-                "Rice & Curry",
-                "Hoppers",
-                "Kokis"
-            ],
-            culture:
-                "මැණික් කර්මාන්තය සහ ශ්‍රී පාදස්ථානය ආශ්‍රිත ආගමික උරුමය."
-        },
+{
+    id:"yala",
+    name:"Yala National Park",
+    category:"nature",
+    location:"Southern / Uva region",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Yala%20National%20Park%2C%20Sri%20Lanka.jpg",
+    short:"A famous wildlife destination.",
+    description:
+    "Yala National Park is known for wildlife and natural landscapes. Visitors can experience Sri Lanka's dry-zone ecosystems and wildlife through permitted safari experiences.",
+    weather:"Warm and dry in many periods",
+    food:"Local Sri Lankan dishes",
+    culture:"Wildlife and natural heritage",
+    safety:"Follow park rules and instructions from guides.",
+    bring:"Water, hat, sun protection and binoculars"
+},
 
-        "Southern Province": {
-            emoji: "🏝️",
-            description:
-                "සුන්දර වෙරළ තීරයන්, ඓතිහාසික නගර සහ දකුණු වෙරළබඩ සංස්කෘතිය සඳහා ප්‍රසිද්ධය.",
-            places: [
-                "Galle",
-                "Mirissa",
-                "Unawatuna",
-                "Matara"
-            ],
-            food: [
-                "Fish Ambul Thiyal",
-                "Seafood",
-                "Rice & Curry"
-            ],
-            culture:
-                "Galle Fort සහ දකුණු ශ්‍රී ලංකාවේ සුවිශේෂී වෙරළබඩ සංස්කෘතිය."
-        },
+{
+    id:"anuradhapura",
+    name:"Anuradhapura",
+    category:"heritage",
+    location:"North Central Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Anuradhapura%20in%20Sri%20Lanka.jpg",
+    short:"An ancient sacred city with remarkable heritage.",
+    description:
+    "Anuradhapura is an ancient city with important Buddhist heritage, stupas, monasteries and archaeological remains.",
+    weather:"Warm",
+    food:"Rice & curry and traditional foods",
+    culture:"Ancient Buddhist heritage",
+    safety:"Dress respectfully at religious locations.",
+    bring:"Water, comfortable shoes and modest clothing"
+},
 
-        "Uva Province": {
-            emoji: "🍃",
-            description:
-                "කඳුකර භූ දර්ශන, තේ වතු සහ දිය ඇලි සඳහා ප්‍රසිද්ධ සුන්දර පළාතකි.",
-            places: [
-                "Ella",
-                "Badulla",
-                "Haputale",
-                "Diyaluma Falls"
-            ],
-            food: [
-                "Rice & Curry",
-                "Roti",
-                "Hoppers"
-            ],
-            culture:
-                "කඳුකර ජීවන රටාව සහ තේ වගාව ආශ්‍රිත සංස්කෘතිය."
-        },
+{
+    id:"polonnaruwa",
+    name:"Polonnaruwa",
+    category:"heritage",
+    location:"North Central Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Polonnaruwa.jpg",
+    short:"An ancient royal capital.",
+    description:
+    "Polonnaruwa is an important archaeological city containing ancient ruins, monuments and artistic remains.",
+    weather:"Warm",
+    food:"Rice & curry and local foods",
+    culture:"Ancient Sri Lankan heritage",
+    safety:"Follow heritage-site rules.",
+    bring:"Water, hat and comfortable shoes"
+},
 
-        "Western Province": {
-            emoji: "🏙️",
-            description:
-                "ශ්‍රී ලංකාවේ ප්‍රධාන නාගරික හා වාණිජ ප්‍රදේශය වන අතර නවීන හා සාම්ප්‍රදායික අත්දැකීම් එකට දැකිය හැක.",
-            places: [
-                "Colombo",
-                "Negombo",
-                "Kalutara",
-                "Mount Lavinia"
-            ],
-            food: [
-                "Kottu",
-                "Hoppers",
-                "Rice & Curry"
-            ],
-            culture:
-                "Colombo නගරයේ විවිධ සංස්කෘතීන්, ආගමික ස්ථාන සහ නවීන නාගරික ජීවන රටාව."
+{
+    id:"dambulla",
+    name:"Dambulla",
+    category:"heritage",
+    location:"Central Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Dambulla%20Cave%20Temple%201.jpg",
+    short:"Famous for its historic cave temple complex.",
+    description:
+    "Dambulla is famous for its cave temple complex containing important religious art and statues.",
+    weather:"Warm",
+    food:"Rice & curry and local snacks",
+    culture:"Buddhist heritage",
+    safety:"Respect temple customs and dress appropriately.",
+    bring:"Water and suitable clothing"
+},
+
+{
+    id:"nuwara",
+    name:"Nuwara Eliya",
+    category:"hill",
+    location:"Central Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Nuwara-Eliya.jpg",
+    short:"Cool mountain climate and famous tea country.",
+    description:
+    "Nuwara Eliya is a highland destination known for its cooler climate, tea plantations and scenic landscapes.",
+    weather:"Cool",
+    food:"Tea, local dishes and bakery foods",
+    culture:"Tea-country heritage",
+    safety:"Weather can change quickly.",
+    bring:"Jacket, umbrella and comfortable shoes"
+},
+
+{
+    id:"unawatuna",
+    name:"Unawatuna",
+    category:"beach",
+    location:"Southern Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Unawatuna%20beach.jpg",
+    short:"A popular tropical beach destination.",
+    description:
+    "Unawatuna is a coastal destination known for its beach, tropical surroundings and proximity to Galle.",
+    weather:"Warm and tropical",
+    food:"Seafood and local dishes",
+    culture:"Southern coastal culture",
+    safety:"Follow local sea-safety advice.",
+    bring:"Water, sun protection and beach essentials"
+},
+
+{
+    id:"arugambay",
+    name:"Arugam Bay",
+    category:"beach",
+    location:"Eastern Province",
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Arugam%20Bay.jpg",
+    short:"A famous east-coast surfing destination.",
+    description:
+    "Arugam Bay is a well-known coastal destination on Sri Lanka's east coast with beaches and a strong surfing culture.",
+    weather:"Warm and tropical",
+    food:"Seafood and local dishes",
+    culture:"Eastern coastal culture",
+    safety:"Follow local beach and sea-safety guidance.",
+    bring:"Water, sun protection and suitable beach clothing"
+}
+
+];
+
+
+/* =========================================================
+   VERIFIED SRI LANKAN FOODS & DRINKS
+   Food identity + photograph checked against reliable sources
+========================================================= */
+
+const foods = [
+
+/* =========================================================
+   1. RICE & CURRY
+========================================================= */
+
+{
+    id:"rice-curry",
+    name:"Rice & Curry",
+    emoji:"🍛",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/SL-rice%20and%20curry.jpg",
+
+    category:"Main Meal",
+
+    description:
+    "Rice and curry is one of the main traditional meals of Sri Lanka. Rice is served together with a variety of curries and accompaniments.",
+
+    details:
+    "A Sri Lankan rice-and-curry meal can contain rice together with vegetable, fish or meat curries, sambols, vegetables, papadam and other accompaniments. The selected photograph is specifically identified as a rice-and-curry meal photographed in Gangodawila, Nugegoda, Sri Lanka.",
+
+    ingredients:
+    "Rice, vegetables, spices, coconut milk and different curry ingredients depending on the meal.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   2. HOPPERS
+========================================================= */
+
+{
+    id:"hoppers",
+    name:"Hoppers",
+    emoji:"🥞",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Egg%20hoppers%20sri%20Lanka.jpg",
+
+    category:"Traditional Food",
+
+    description:
+    "Hoppers are bowl-shaped Sri Lankan pancakes traditionally made from fermented rice flour and coconut milk.",
+
+    details:
+    "Hoppers are a well-known Sri Lankan food. They can be eaten with accompaniments such as lunu miris and curry. The selected photograph is specifically identified as an egg hopper in Sri Lanka.",
+
+    ingredients:
+    "Rice flour, coconut milk and other ingredients used to prepare the batter.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   3. EGG HOPPERS
+========================================================= */
+
+{
+    id:"egg-hoppers",
+    name:"Egg Hoppers",
+    emoji:"🍳",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Sri%20Lanka-Egg%20hoppers.jpg",
+
+    category:"Traditional Food",
+
+    description:
+    "Egg hoppers are a Sri Lankan variation of hoppers with an egg cooked inside the bowl-shaped centre.",
+
+    details:
+    "Egg hoppers are one of the recognised varieties of Sri Lankan hoppers. The selected Wikimedia Commons photograph is specifically identified as Sri Lanka egg hoppers.",
+
+    ingredients:
+    "Hopper batter and an egg, usually served with traditional accompaniments.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   4. STRING HOPPERS
+========================================================= */
+
+{
+    id:"string-hoppers",
+    name:"String Hoppers",
+    emoji:"🍜",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Sri%20Lanka-String%20hoppers.jpg",
+
+    category:"Traditional Food",
+
+    description:
+    "String hoppers are steamed rice-flour strands traditionally shaped into small nests.",
+
+    details:
+    "Sri Lanka Tourism describes string hoppers as a Sri Lankan staple. They are commonly served with dhal, potato, fish or meat curry and pol sambol. The selected photograph is specifically identified as string hoppers, a speciality of Sri Lanka.",
+
+    ingredients:
+    "Rice flour, water and ingredients used for the accompanying curries or sambol.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   5. PITTU
+========================================================= */
+
+{
+    id:"pittu",
+    name:"Pittu",
+    emoji:"🥥",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Pittu%20At%20Omax.jpg",
+
+    category:"Traditional Food",
+
+    description:
+    "Pittu is a traditional Sri Lankan food made from flour and grated coconut and cooked by steaming.",
+
+    details:
+    "Pittu is especially associated with Sri Lankan Tamil cuisine and is commonly eaten for breakfast or dinner. The selected photograph is specifically described as Sri Lankan Tamil food, Pittu and seafood in Jaffna, Sri Lanka.",
+
+    ingredients:
+    "Rice flour or other flour, grated coconut and water.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   6. KIRIBATH
+========================================================= */
+
+{
+    id:"kiribath",
+    name:"Kiribath",
+    emoji:"🍚",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Kiribath.jpg",
+
+    category:"Traditional Food",
+
+    description:
+    "Kiribath, or milk rice, is a traditional Sri Lankan dish made by cooking rice with coconut milk.",
+
+    details:
+    "Kiribath is strongly associated with Sri Lankan traditions and is especially important during auspicious occasions and the Sinhala and Tamil New Year. The selected Wikimedia Commons file specifically describes kiribath as a traditional Sri Lankan dish.",
+
+    ingredients:
+    "Rice, coconut milk and salt.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   7. LAMPRAIS
+========================================================= */
+
+{
+    id:"lamprais",
+    name:"Lamprais",
+    emoji:"🍃",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Lamprais%20%28Sri%20Lankan%20cuisine%29.jpg",
+
+    category:"Traditional Food",
+
+    description:
+    "Lamprais is a Sri Lankan dish in which rice and accompanying foods are traditionally baked together in a banana leaf.",
+
+    details:
+    "Sri Lanka Tourism describes lamprais as rice and accompaniments baked in plantain leaves. The selected photograph is specifically identified as Lamprais and as Sri Lankan cuisine, with its connection to the Dutch Burgher community.",
+
+    ingredients:
+    "Rice and a combination of curries, meat and other accompaniments wrapped in a banana leaf.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   8. WATALAPPAM
+========================================================= */
+
+{
+    id:"watalappam",
+    name:"Watalappam",
+    emoji:"🍮",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Watalappan-Sri%20Lanka.jpg",
+
+    category:"Dessert",
+
+    description:
+    "Watalappam is a traditional Sri Lankan steamed dessert with a rich coconut-based custard texture.",
+
+    details:
+    "Watalappam is a recognised Sri Lankan dessert with Malay culinary influence. Wikimedia Commons places Watalappam in the Sri Lankan desserts category and identifies Sri Lanka as its country of origin.",
+
+    ingredients:
+    "Coconut milk, eggs, palm-based sweetener and spices such as cardamom and nutmeg.",
+
+    type:"Dessert"
+},
+
+
+/* =========================================================
+   9. POL SAMBOL
+========================================================= */
+
+{
+    id:"pol-sambol",
+    name:"Pol Sambol",
+    emoji:"🥥",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Pol%20Sambol.jpg",
+
+    category:"Accompaniment",
+
+    description:
+    "Pol sambol is a traditional Sri Lankan coconut sambol with a spicy and tangy flavour.",
+
+    details:
+    "The selected Wikimedia Commons photograph is specifically captioned as a traditional Sri Lankan dish, Pol Sambol. It is described as being served as an accompaniment to curry and rice.",
+
+    ingredients:
+    "Grated coconut, onion, chilli, paprika and lemon or lime juice.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   10. KAVUM
+========================================================= */
+
+{
+    id:"kavum",
+    name:"Konda Kavum",
+    emoji:"🍩",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Konda%20Kavum%2001.JPG",
+
+    category:"Traditional Sweet",
+
+    description:
+    "Konda Kavum is a traditional Sri Lankan deep-fried sweet made with rice flour and treacle.",
+
+    details:
+    "The selected photograph is specifically described as a plate of Konda Kavum, a traditional Sri Lankan dish. It is known for its distinctive shape and is associated with Sri Lankan festive food.",
+
+    ingredients:
+    "Rice flour, treacle and other ingredients used in preparing the batter.",
+
+    type:"Sweet"
+},
+
+
+/* =========================================================
+   11. KOKIS
+========================================================= */
+
+{
+    id:"kokis",
+    name:"Kokis",
+    emoji:"🌼",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Kokis.JPG",
+
+    category:"Traditional Food",
+
+    description:
+    "Kokis is a traditional Sri Lankan crispy food with a distinctive moulded shape.",
+
+    details:
+    "The selected Wikimedia Commons photograph is specifically described as a plate of Kokis, a traditional dish in Sri Lanka. Kokis is also associated with Sri Lankan festive food and the Sinhala and Tamil New Year.",
+
+    ingredients:
+    "Rice flour, coconut milk and other ingredients used to prepare the batter.",
+
+    type:"Sweet / Snack"
+},
+
+
+/* =========================================================
+   12. GREEN GRAM
+========================================================= */
+
+{
+    id:"green-gram",
+    name:"Green Gram",
+    emoji:"🫘",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Green%20gram.jpg",
+
+    category:"Breakfast",
+
+    description:
+    "Green gram, also known as mung bean, is a traditional Sri Lankan breakfast food.",
+
+    details:
+    "Sri Lanka Tourism describes a bowl of boiled green gram served with coconut and spicy lunu miris as a popular Sri Lankan breakfast meal. The photograph used here specifically depicts green gram (mung bean).",
+
+    ingredients:
+    "Green gram (mung beans), commonly served boiled with coconut and traditional accompaniments.",
+
+    type:"Food"
+},
+
+
+/* =========================================================
+   13. CEYLON TEA
+========================================================= */
+
+{
+    id:"ceylon-tea",
+    name:"Ceylon Tea",
+    emoji:"🍵",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/Ceylon%20tea.jpg",
+
+    category:"Drink",
+
+    description:
+    "Ceylon Tea is the internationally recognised tea associated with Sri Lanka and its tea-growing regions.",
+
+    details:
+    "The selected Wikimedia Commons photograph is specifically captioned 'Tea Plantations of Sri Lanka' and describes the development of Ceylon tea in the country's hill country. It therefore represents the source and heritage of Ceylon Tea rather than an unrelated tea photograph.",
+
+    ingredients:
+    "Tea leaves produced from the tea plant and processed into Ceylon Tea.",
+
+    type:"Drink"
+},
+
+
+/* =========================================================
+   14. KING COCONUT
+========================================================= */
+
+{
+    id:"king-coconut",
+    name:"King Coconut",
+    emoji:"🥥",
+
+    image:"https://commons.wikimedia.org/wiki/Special:FilePath/King%20of%20Coconut.jpg",
+
+    category:"Drink",
+
+    description:
+    "King Coconut, locally known as thambili, is a naturally refreshing coconut drink associated with Sri Lanka.",
+
+    details:
+    "The drink comes from the water inside the orange-coloured king coconut. It is commonly enjoyed fresh from the coconut and is a familiar part of Sri Lankan food and drink culture.",
+
+    ingredients:
+    "Fresh king coconut water.",
+
+    type:"Drink"
+}
+
+];
+
+/* =========================================================
+   STATE
+========================================================= */
+
+let currentPage = "home";
+let currentPlace = null;
+let currentFood = null;
+let placeFilter = "all";
+
+let favorites =
+    JSON.parse(localStorage.getItem("slFavorites") || "[]");
+
+
+/* =========================================================
+   NAVIGATION
+========================================================= */
+
+function goTo(page, data = null){
+
+    if(data){
+        if(data.type === "place"){
+            currentPlace = data.id;
         }
 
-    };
+        if(data.type === "food"){
+            currentFood = data.id;
+        }
+    }
 
+    currentPage = page;
 
-    /* ==========================================
-       DESTINATION DATA
-    ========================================== */
+    if(page === "place-detail"){
+        renderPlaceDetail();
+    }
 
-    const destinationData = {
+    if(page === "food-detail"){
+        renderFoodDetail();
+    }
 
-        "Ella": {
-            emoji: "🏔️",
-            province: "Uva Province",
-            description:
-                "කඳුකරයේ සුන්දර දර්ශන, තේ වතු සහ ස්වභාවික පරිසරය සඳහා ප්‍රසිද්ධ ගමනාන්තයකි.",
-            highlights:
-                "Nine Arch Bridge • Little Adam's Peak • Ella Rock"
+    if(page === "favorites"){
+        renderFavorites();
+    }
+
+    if(page === "packing"){
+        renderPacking();
+    }
+
+    if(page === "planner"){
+        fillPlannerDestinations();
+    }
+
+    document.querySelectorAll(".page")
+        .forEach(p => p.classList.remove("active"));
+
+    const target =
+        document.getElementById("page-" + page);
+
+    if(target){
+        target.classList.add("active");
+    }
+
+    updateBottomNav(page);
+
+    window.scrollTo({
+        top:0,
+        behavior:"smooth"
+    });
+
+    history.pushState(
+        {
+            page:page,
+            place:currentPlace,
+            food:currentFood
         },
+        "",
+        "#" + page
+    );
+}
 
-        "Mirissa": {
-            emoji: "🏖️",
-            province: "Southern Province",
-            description:
-                "දකුණු වෙරළ තීරයේ සුන්දර වෙරළක් සහ නිස්කලංක නිවර්තන පරිසරයක් සහිත ගමනාන්තයකි.",
-            highlights:
-                "Mirissa Beach • Coconut Tree Hill • Whale Watching"
-        },
 
-        "Sigiriya": {
-            emoji: "🏛️",
-            province: "Central Province",
-            description:
-                "පැරණි ශ්‍රී ලංකාවේ වැදගත් ඓතිහාසික හා පුරාවිද්‍යාත්මක ස්ථානයකි.",
-            highlights:
-                "Sigiriya Rock • Frescoes • Ancient Gardens"
-        },
+function goBack(){
 
-        "Arugam Bay": {
-            emoji: "🌊",
-            province: "Eastern Province",
-            description:
-                "ශ්‍රී ලංකාවේ නැගෙනහිර වෙරළේ පිහිටි ජනප්‍රිය සංචාරක ගමනාන්තයකි.",
-            highlights:
-                "Beach • Surfing • Lagoon"
-        },
+    if(history.length > 1){
+        history.back();
+    }else{
+        goTo("home");
+    }
+}
 
-        "Yala": {
-            emoji: "🐘",
-            province: "Southern Province",
-            description:
-                "වනජීවී අත්දැකීම් සඳහා ප්‍රසිද්ධ ශ්‍රී ලංකාවේ ජාතික උද්‍යාන ප්‍රදේශයකි.",
-            highlights:
-                "Elephants • Leopards • Birds"
-        },
 
-        "Nuwara Eliya": {
-            emoji: "🍃",
-            province: "Central Province",
-            description:
-                "සිසිල් දේශගුණය, තේ වතු සහ කඳුකර දර්ශන සඳහා ප්‍රසිද්ධය.",
-            highlights:
-                "Tea Estates • Gregory Lake • Horton Plains"
+window.addEventListener("popstate", function(event){
+
+    const state = event.state;
+
+    if(state && state.page){
+
+        currentPlace = state.place;
+        currentFood = state.food;
+
+        currentPage = state.page;
+
+        document.querySelectorAll(".page")
+            .forEach(p => p.classList.remove("active"));
+
+        const target =
+            document.getElementById("page-" + state.page);
+
+        if(target){
+            target.classList.add("active");
         }
 
-    };
+        if(state.page === "place-detail"){
+            renderPlaceDetail();
+        }
+
+        if(state.page === "food-detail"){
+            renderFoodDetail();
+        }
+
+        if(state.page === "favorites"){
+            renderFavorites();
+        }
+
+        if(state.page === "packing"){
+            renderPacking();
+        }
+
+        if(state.page === "planner"){
+            fillPlannerDestinations();
+        }
+
+        updateBottomNav(state.page);
+
+        window.scrollTo(0,0);
+    }
+
+});
 
 
-    /* ==========================================
-       CREATE POPUP
-    ========================================== */
+function updateBottomNav(page){
 
-    const popup = document.createElement("div");
+    let mainPage = page;
 
-    popup.innerHTML = `
+    if(
+        page === "place-detail" ||
+        page === "food-detail" ||
+        page === "search" ||
+        page === "culture" ||
+        page === "weather" ||
+        page === "packing"
+    ){
+        mainPage = "";
+    }
 
-        <div id="popupOverlay">
+    document.querySelectorAll(".nav-item")
+        .forEach(item => {
 
-            <div id="infoPopup">
+            item.classList.remove("active");
 
-                <button id="closePopup">×</button>
+            if(item.dataset.page === mainPage){
+                item.classList.add("active");
+            }
 
-                <div id="popupContent"></div>
+        });
+}
+
+
+/* =========================================================
+   HOME
+========================================================= */
+
+function renderHome(){
+
+    const box =
+        document.getElementById("homePlaces");
+
+    box.innerHTML =
+        places.slice(0,3).map(place => placeCard(place)).join("");
+
+}
+
+
+/* =========================================================
+   PLACE CARDS
+========================================================= */
+
+function placeCard(place){
+
+    const fav =
+        favorites.includes(place.id);
+
+    return `
+
+    <article class="card">
+
+        <img
+            class="card-img"
+            src="${place.image}"
+            alt="${place.name}"
+            loading="lazy"
+        >
+
+        <div class="card-body">
+
+            <h3>${place.name}</h3>
+
+            <p>
+                ${place.short}
+            </p>
+
+            <div class="card-actions">
+
+                <button
+                    class="small-btn green"
+                    onclick="goTo('place-detail',{
+                        type:'place',
+                        id:'${place.id}'
+                    })">
+
+                    Explore
+
+                </button>
+
+                <button
+                    class="small-btn"
+                    onclick="toggleFavorite('${place.id}')">
+
+                    ${fav ? "❤️ Saved" : "♡ Save"}
+
+                </button>
 
             </div>
 
         </div>
 
-    `;
-
-    document.body.appendChild(popup);
-
-
-    /* ==========================================
-       POPUP CSS
-    ========================================== */
-
-    const popupStyle = document.createElement("style");
-
-    popupStyle.innerHTML = `
-
-        #popupOverlay {
-
-            position: fixed;
-            inset: 0;
-
-            background: rgba(0,0,0,0.65);
-
-            display: none;
-
-            align-items: center;
-            justify-content: center;
-
-            padding: 20px;
-
-            z-index: 1000;
-
-            backdrop-filter: blur(5px);
-
-        }
-
-
-        #infoPopup {
-
-            background: white;
-
-            width: 100%;
-            max-width: 520px;
-
-            max-height: 85vh;
-
-            overflow-y: auto;
-
-            border-radius: 28px;
-
-            padding: 32px;
-
-            position: relative;
-
-            box-shadow:
-                0 25px 70px rgba(0,0,0,0.25);
-
-            animation: popupOpen 0.25s ease;
-
-        }
-
-
-        @keyframes popupOpen {
-
-            from {
-                transform: scale(0.85);
-                opacity: 0;
-            }
-
-            to {
-                transform: scale(1);
-                opacity: 1;
-            }
-
-        }
-
-
-        #closePopup {
-
-            position: absolute;
-
-            right: 18px;
-            top: 15px;
-
-            width: 40px;
-            height: 40px;
-
-            border: none;
-
-            border-radius: 50%;
-
-            background: #edf6f1;
-
-            color: #173b2b;
-
-            font-size: 27px;
-
-            cursor: pointer;
-
-        }
-
-
-        .popupEmoji {
-
-            font-size: 65px;
-
-            text-align: center;
-
-            margin-bottom: 10px;
-
-        }
-
-
-        .popupTitle {
-
-            text-align: center;
-
-            font-size: 28px;
-
-            margin-bottom: 12px;
-
-        }
-
-
-        .popupDescription {
-
-            color: #68776f;
-
-            line-height: 1.7;
-
-            text-align: center;
-
-            margin-bottom: 25px;
-
-        }
-
-
-        .popupSection {
-
-            background: #f3faf6;
-
-            padding: 18px;
-
-            border-radius: 18px;
-
-            margin-top: 12px;
-
-        }
-
-
-        .popupSection h4 {
-
-            margin-bottom: 8px;
-
-        }
-
-
-        .popupSection p {
-
-            color: #65736c;
-
-            line-height: 1.6;
-
-            font-size: 14px;
-
-        }
-
-
-        .placeTag {
-
-            display: inline-block;
-
-            background: white;
-
-            padding: 8px 12px;
-
-            border-radius: 20px;
-
-            margin: 4px;
-
-            font-size: 13px;
-
-            box-shadow: 0 2px 8px rgba(0,0,0,0.05);
-
-        }
+    </article>
 
     `;
+}
 
-    document.head.appendChild(popupStyle);
+
+/* =========================================================
+   PLACE FILTER
+========================================================= */
+
+function filterPlaces(category, button){
+
+    placeFilter = category;
+
+    document.querySelectorAll(".filter")
+        .forEach(x => x.classList.remove("active"));
+
+    button.classList.add("active");
+
+    renderPlaces();
+}
 
 
-    /* ==========================================
-       OPEN POPUP
-    ========================================== */
+function renderPlaces(){
 
-    function openPopup(content) {
+    const search =
+        (document.getElementById("placeSearch")?.value || "")
+        .toLowerCase();
 
-        document.getElementById("popupContent").innerHTML =
-            content;
+    const filtered = places.filter(place => {
 
-        document.getElementById("popupOverlay").style.display =
-            "flex";
+        const matchesCategory =
+            placeFilter === "all" ||
+            place.category === placeFilter;
 
-        document.body.style.overflow = "hidden";
+        const matchesSearch =
+            place.name.toLowerCase().includes(search) ||
+            place.location.toLowerCase().includes(search);
+
+        return matchesCategory && matchesSearch;
+
+    });
+
+    document.getElementById("placesGrid").innerHTML =
+        filtered.length
+        ? filtered.map(place => placeCard(place)).join("")
+        : `
+            <div class="empty">
+                <div class="empty-icon">🔎</div>
+                <h3>No places found</h3>
+                <p>Try another search.</p>
+            </div>
+        `;
+}
+
+
+/* =========================================================
+   PLACE DETAIL
+========================================================= */
+
+function renderPlaceDetail(){
+
+    const place =
+        places.find(x => x.id === currentPlace);
+
+    if(!place) return;
+
+    const saved =
+        favorites.includes(place.id);
+
+    document.getElementById("placeDetail").innerHTML = `
+
+        <div class="detail-hero">
+
+            <img
+                src="${place.image}"
+                alt="${place.name}"
+            >
+
+            <div class="detail-overlay"></div>
+
+            <div class="detail-title">
+
+                <h1>${place.name}</h1>
+
+                <p>📍 ${place.location}</p>
+
+            </div>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <p style="line-height:1.8;color:#65716b;">
+                ${place.description}
+            </p>
+
+
+            <div class="card-actions">
+
+                <button
+                    class="primary-btn"
+                    onclick="planForPlace('${place.id}')">
+
+                    ✈️ Plan This Trip
+
+                </button>
+
+                <button
+                    class="small-btn"
+                    onclick="toggleFavorite('${place.id}')">
+
+                    ${saved ? "❤️ Saved" : "♡ Add to Favorites"}
+
+                </button>
+
+            </div>
+
+
+            <div class="info-grid">
+
+                <div class="info-box">
+                    <strong>☀️ Weather</strong>
+                    ${place.weather}
+                </div>
+
+                <div class="info-box">
+                    <strong>🍛 Food</strong>
+                    ${place.food}
+                </div>
+
+                <div class="info-box">
+                    <strong>🎭 Culture</strong>
+                    ${place.culture}
+                </div>
+
+                <div class="info-box">
+                    <strong>🎒 Bring</strong>
+                    ${place.bring}
+                </div>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <h2>🛡️ Safety & Caution</h2>
+
+                <p>
+                    ${place.safety}
+                </p>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <h2>🧳 Packing</h2>
+
+                <p>
+                    Create an essential packing list for your trip.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    style="margin-top:15px;"
+                    onclick="goTo('packing')">
+
+                    Open Packing List
+
+                </button>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <h2>🔎 Learn More</h2>
+
+                <p>
+                    Search Google for more information,
+                    attractions and travel updates.
+                </p>
+
+                <button
+                    class="small-btn green"
+                    style="margin-top:12px;"
+                    onclick="openGoogle('${place.name} Sri Lanka tourism')">
+
+                    Google Search
+
+                </button>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <h2>📍 Google Maps</h2>
+
+                <button
+                    class="small-btn green"
+                    onclick="openMaps('${place.name}, Sri Lanka')">
+
+                    Open in Google Maps
+
+                </button>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* =========================================================
+   FOOD
+========================================================= */
+
+function renderFood(){
+
+    document.getElementById("foodGrid").innerHTML =
+        foods.map(food => `
+
+        <article class="card">
+
+            <img
+                class="card-img"
+                src="${food.image}"
+                alt="${food.name}"
+                loading="lazy"
+            >
+
+            <div class="card-body">
+
+                <h3>
+                    ${food.emoji}
+                    ${food.name}
+                </h3>
+
+                <p>
+                    ${food.description}
+                </p>
+
+                <div class="card-actions">
+
+                    <button
+                        class="small-btn green"
+                        onclick="goTo('food-detail',{
+                            type:'food',
+                            id:'${food.id}'
+                        })">
+
+                        View Details
+
+                    </button>
+
+                    <button
+                        class="small-btn"
+                        onclick="goTo('planner')">
+
+                        ✈️ Plan
+
+                    </button>
+
+                </div>
+
+            </div>
+
+        </article>
+
+        `).join("");
+
+}
+
+
+/* =========================================================
+   FOOD DETAIL
+========================================================= */
+
+function renderFoodDetail(){
+
+    const food =
+        foods.find(x => x.id === currentFood);
+
+    if(!food) return;
+
+    document.getElementById("foodDetail").innerHTML = `
+
+        <div class="detail-hero">
+
+            <img
+                src="${food.image}"
+                alt="${food.name}"
+            >
+
+            <div class="detail-overlay"></div>
+
+            <div class="detail-title">
+
+                <h1>
+                    ${food.emoji}
+                    ${food.name}
+                </h1>
+
+            </div>
+
+        </div>
+
+
+        <div class="detail-content">
+
+            <h2>${food.name}</h2>
+
+            <p style="
+                color:#65716b;
+                line-height:1.8;
+                margin-top:10px;
+            ">
+                ${food.description}
+            </p>
+
+
+            <div class="detail-section">
+
+                <h2>🍴 About this food</h2>
+
+                <p>
+                    ${food.details}
+                </p>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <h2>🇱🇰 Discover More</h2>
+
+                <p>
+                    Learn more about Sri Lankan cuisine,
+                    traditional foods and local food culture.
+                </p>
+
+                <button
+                    class="small-btn green"
+                    style="margin-top:12px;"
+                    onclick="openGoogle('${food.name} Sri Lankan food')">
+
+                    🔎 Search More
+
+                </button>
+
+            </div>
+
+
+            <div class="detail-section">
+
+                <h2>✈️ Ready to Travel?</h2>
+
+                <p>
+                    Plan a Sri Lankan trip and discover local
+                    food along the way.
+                </p>
+
+                <button
+                    class="primary-btn"
+                    style="margin-top:15px;"
+                    onclick="goTo('planner')">
+
+                    Plan My Trip
+
+                </button>
+
+            </div>
+
+        </div>
+    `;
+}
+
+
+/* =========================================================
+   PLANNER
+========================================================= */
+
+function fillPlannerDestinations(){
+
+    const select =
+        document.getElementById("planDestination");
+
+    if(!select) return;
+
+    const oldValue = currentPlace || select.value;
+
+    select.innerHTML = `
+
+        <option value="">
+            Choose destination
+        </option>
+
+        ${places.map(place => `
+            <option value="${place.id}">
+                ${place.name}
+            </option>
+        `).join("")}
+
+    `;
+
+    if(oldValue){
+        select.value = oldValue;
+    }
+}
+
+
+function planForPlace(id){
+
+    currentPlace = id;
+
+    goTo("planner");
+
+    setTimeout(() => {
+
+        const select =
+            document.getElementById("planDestination");
+
+        if(select){
+            select.value = id;
+        }
+
+    },50);
+
+}
+
+
+function generatePlan(){
+
+    const destination =
+        document.getElementById("planDestination").value;
+
+    const days =
+        Number(document.getElementById("planDays").value);
+
+    const people =
+        Number(document.getElementById("planPeople").value);
+
+    const budget =
+        Number(document.getElementById("planBudget").value);
+
+
+    const result =
+        document.getElementById("plannerResult");
+
+
+    if(!destination){
+
+        result.style.display = "block";
+
+        result.innerHTML = `
+            <strong>⚠️ Please choose a destination.</strong>
+        `;
+
+        return;
     }
 
 
-    /* ==========================================
-       CLOSE POPUP
-    ========================================== */
+    if(days < 1 || people < 1){
 
-    function closePopup() {
+        result.style.display = "block";
 
-        document.getElementById("popupOverlay").style.display =
-            "none";
+        result.innerHTML = `
+            <strong>⚠️ Please enter valid trip details.</strong>
+        `;
 
-        document.body.style.overflow = "auto";
+        return;
     }
 
 
-    document
-        .getElementById("closePopup")
-        .addEventListener("click", closePopup);
+    const place =
+        places.find(x => x.id === destination);
 
 
-    document
-        .getElementById("popupOverlay")
-        .addEventListener("click", function(e) {
+    /*
+       Rough planning estimates only.
+       These are NOT live prices.
+    */
 
-            if (e.target.id === "popupOverlay") {
+    const transportPerPerson =
+        place.category === "hill" ? 4500 : 3500;
 
-                closePopup();
+    const hotelPerNight =
+        place.category === "beach" ? 7000 :
+        place.category === "hill" ? 6500 :
+        5500;
 
+    const foodPerPersonDay = 2500;
+
+    const transport =
+        transportPerPerson * people;
+
+    const hotel =
+        hotelPerNight * Math.max(days - 1,1) * people;
+
+    const food =
+        foodPerPersonDay * days * people;
+
+    const activities =
+        3000 * people;
+
+    const estimated =
+        transport + hotel + food + activities;
+
+
+    const withinBudget =
+        estimated <= budget;
+
+
+    result.style.display = "block";
+
+
+    result.innerHTML = `
+
+        <h2>
+            ${withinBudget ? "✅ Trip Plan" : "⚠️ Budget Check"}
+        </h2>
+
+        <p style="margin:8px 0 20px;">
+            ${place.name} • ${days} days • ${people} person(s)
+        </p>
+
+
+        <div class="budget-line">
+            <span>🚗 Transport</span>
+            <strong>
+                LKR ${transport.toLocaleString()}
+            </strong>
+        </div>
+
+
+        <div class="budget-line">
+            <span>🏨 Accommodation</span>
+            <strong>
+                LKR ${hotel.toLocaleString()}
+            </strong>
+        </div>
+
+
+        <div class="budget-line">
+            <span>🍛 Food</span>
+            <strong>
+                LKR ${food.toLocaleString()}
+            </strong>
+        </div>
+
+
+        <div class="budget-line">
+            <span>🎟️ Activities</span>
+            <strong>
+                LKR ${activities.toLocaleString()}
+            </strong>
+        </div>
+
+
+        <div class="budget-line"
+             style="font-size:18px;border:none;margin-top:10px;">
+
+            <strong>Estimated Total</strong>
+
+            <strong>
+                LKR ${estimated.toLocaleString()}
+            </strong>
+
+        </div>
+
+
+        <div style="
+            margin-top:18px;
+            padding:15px;
+            background:${withinBudget ? "#dff7ed" : "#fff1d6"};
+            border-radius:14px;
+        ">
+
+            ${
+                withinBudget
+                ?
+                `🎉 Your estimated trip is within your
+                LKR ${budget.toLocaleString()} budget.`
+                :
+                `Your estimated cost is above your
+                LKR ${budget.toLocaleString()} budget.
+                Try reducing the number of days,
+                people or accommodation cost.`
             }
 
-        });
+        </div>
 
 
-    /* ==========================================
-       PROVINCE CLICK
-    ========================================== */
+        <div style="margin-top:20px;">
 
-    const provinces =
-        document.querySelectorAll(".province");
+            <h3>📅 Simple Itinerary</h3>
 
+            <br>
 
-    provinces.forEach(function(province) {
+            ${createItinerary(place,days)}
 
-        province.addEventListener("click", function() {
+        </div>
 
-            const name =
-                province.querySelector("h3").innerText;
-
-            const data =
-                provinceData[name];
+    `;
+}
 
 
-            if (!data) return;
+function createItinerary(place,days){
+
+    let html = "";
+
+    for(let i=1;i<=days;i++){
+
+        let activity =
+            i === 1
+            ? `Arrive in ${place.name} • Explore nearby attractions`
+            : i === days
+            ? `Relax • Local food • Final sightseeing`
+            : `Explore ${place.name} • Local culture • Attractions`;
+
+        html += `
+
+            <div class="white-box">
+
+                <h3>Day ${i}</h3>
+
+                <p>${activity}</p>
+
+            </div>
+
+        `;
+    }
+
+    return html;
+}
 
 
-            const placesHTML =
-                data.places.map(function(place) {
+/* =========================================================
+   PACKING
+========================================================= */
 
-                    return `<span class="placeTag">📍 ${place}</span>`;
+const packingItems = [
 
-                }).join("");
+    "🪪 ID / important documents",
+    "📱 Mobile phone",
+    "🔌 Phone charger",
+    "🔋 Power bank",
+    "💧 Water bottle",
+    "🧢 Hat / cap",
+    "🧴 Sun protection",
+    "👕 Comfortable clothes",
+    "👟 Comfortable shoes",
+    "☔ Umbrella / rain protection",
+    "🧼 Personal hygiene items",
+    "🎒 Small day bag",
+    "💵 Some cash",
+    "🕶️ Sunglasses",
+    "📷 Camera (optional)"
+
+];
 
 
-            const foodHTML =
-                data.food.map(function(food) {
+function renderPacking(){
 
-                    return `<span class="placeTag">🍛 ${food}</span>`;
+    const saved =
+        JSON.parse(
+            localStorage.getItem("slPacking") || "[]"
+        );
 
-                }).join("");
+
+    document.getElementById("packingList").innerHTML =
+
+        packingItems.map((item,index) => `
+
+            <label class="pack-item
+                ${saved.includes(index) ? "done" : ""}">
+
+                <input
+                    type="checkbox"
+                    ${saved.includes(index) ? "checked" : ""}
+                    onchange="togglePack(${index},this)"
+                >
+
+                <span>${item}</span>
+
+            </label>
+
+        `).join("");
+
+}
 
 
-            openPopup(`
+function togglePack(index,checkbox){
 
-                <div class="popupEmoji">
-                    ${data.emoji}
-                </div>
+    let saved =
+        JSON.parse(
+            localStorage.getItem("slPacking") || "[]"
+        );
 
-                <h2 class="popupTitle">
-                    ${name}
-                </h2>
+    if(checkbox.checked){
 
-                <p class="popupDescription">
-                    ${data.description}
+        if(!saved.includes(index)){
+            saved.push(index);
+        }
+
+    }else{
+
+        saved =
+            saved.filter(x => x !== index);
+
+    }
+
+    localStorage.setItem(
+        "slPacking",
+        JSON.stringify(saved)
+    );
+
+    renderPacking();
+
+}
+
+
+function clearPacking(){
+
+    localStorage.removeItem("slPacking");
+
+    renderPacking();
+
+}
+
+
+/* =========================================================
+   FAVORITES
+========================================================= */
+
+function toggleFavorite(id){
+
+    if(favorites.includes(id)){
+
+        favorites =
+            favorites.filter(x => x !== id);
+
+    }else{
+
+        favorites.push(id);
+
+    }
+
+    localStorage.setItem(
+        "slFavorites",
+        JSON.stringify(favorites)
+    );
+
+    renderPlaces();
+    renderHome();
+    renderFavorites();
+
+    if(currentPage === "place-detail"){
+        renderPlaceDetail();
+    }
+
+}
+
+
+function toggleFavoriteCurrent(){
+
+    if(currentPlace){
+        toggleFavorite(currentPlace);
+    }
+
+}
+
+
+function renderFavorites(){
+
+    const box =
+        document.getElementById("favoritesGrid");
+
+    const saved =
+        places.filter(
+            place => favorites.includes(place.id)
+        );
+
+
+    if(saved.length === 0){
+
+        box.innerHTML = `
+
+            <div class="empty">
+
+                <div class="empty-icon">♡</div>
+
+                <h2>No saved places yet</h2>
+
+                <p>
+                    Tap ♡ on a destination to save it here.
                 </p>
 
+                <button
+                    class="primary-btn"
+                    style="margin-top:20px;"
+                    onclick="goTo('places')">
 
-                <div class="popupSection">
+                    Explore Places
 
-                    <h4>📍 Places to Explore</h4>
+                </button>
 
-                    <div>
-                        ${placesHTML}
-                    </div>
+            </div>
 
-                </div>
+        `;
 
-
-                <div class="popupSection">
-
-                    <h4>🍛 Local Food</h4>
-
-                    <div>
-                        ${foodHTML}
-                    </div>
-
-                </div>
+        return;
+    }
 
 
-                <div class="popupSection">
+    box.innerHTML = `
 
-                    <h4>🎭 Culture & Heritage</h4>
+        <div class="card-grid">
 
-                    <p>
-                        ${data.culture}
-                    </p>
+            ${saved.map(place => placeCard(place)).join("")}
 
-                </div>
+        </div>
 
-            `);
+    `;
 
-        });
-
-    });
+}
 
 
-    /* ==========================================
-       DESTINATION CLICK
-    ========================================== */
+/* =========================================================
+   GLOBAL SEARCH
+========================================================= */
 
-    const destinationCards =
-        document.querySelectorAll(".destination");
+function globalSearch(){
 
-
-    destinationCards.forEach(function(card) {
-
-        card.style.cursor = "pointer";
-
-
-        card.addEventListener("click", function() {
-
-            const title =
-                card.querySelector("h3").innerText;
-
-            const data =
-                destinationData[title];
+    const query =
+        document.getElementById("globalSearch")
+        .value
+        .toLowerCase()
+        .trim();
 
 
-            if (!data) return;
+    const box =
+        document.getElementById("searchResults");
 
 
-            openPopup(`
+    if(!query){
 
-                <div class="popupEmoji">
-                    ${data.emoji}
-                </div>
+        box.innerHTML = `
 
-                <h2 class="popupTitle">
-                    ${title}
-                </h2>
+            <div class="empty">
 
-                <p class="popupDescription">
-                    ${data.description}
+                <div class="empty-icon">🔎</div>
+
+                <h3>Search Sri Lanka</h3>
+
+                <p>
+                    Search for places or food.
                 </p>
 
+            </div>
 
-                <div class="popupSection">
+        `;
 
-                    <h4>📍 Province</h4>
+        return;
 
-                    <p>
-                        ${data.province}
-                    </p>
-
-                </div>
+    }
 
 
-                <div class="popupSection">
-
-                    <h4>✨ Highlights</h4>
-
-                    <p>
-                        ${data.highlights}
-                    </p>
-
-                </div>
-
-            `);
-
-        });
-
-    });
+    const matchedPlaces =
+        places.filter(place =>
+            place.name.toLowerCase().includes(query) ||
+            place.location.toLowerCase().includes(query)
+        );
 
 
-    /* ==========================================
-       EXPLORE CATEGORY CLICK
-    ========================================== */
-
-    const categoryCards =
-        document.querySelectorAll(".card");
+    const matchedFoods =
+        foods.filter(food =>
+            food.name.toLowerCase().includes(query)
+        );
 
 
-    categoryCards.forEach(function(card) {
+    box.innerHTML = `
 
-        card.addEventListener("click", function() {
+        ${
+            matchedPlaces.length
+            ?
+            `
+            <h2 style="margin-bottom:15px;">
+                🗺️ Places
+            </h2>
 
-            const title =
-                card.querySelector("h3").innerText;
+            <div class="card-grid">
 
+                ${matchedPlaces.map(place =>
+                    placeCard(place)
+                ).join("")}
 
-            const information = {
+            </div>
 
-                "Mountains":
-                    "ශ්‍රී ලංකාවේ කඳුකර ප්‍රදේශවලට ගොස් සුන්දර කඳු, තේ වතු, දිය ඇලි සහ ස්වභාවික දර්ශන අත්විඳිය හැක.",
-
-                "Beaches":
-                    "ශ්‍රී ලංකාවේ දිගු වෙරළ තීරය නිසා විවිධ සුන්දර වෙරළ ගමනාන්ත සොයාගත හැක.",
-
-                "Food":
-                    "Rice & Curry, Hoppers, Kottu, String Hoppers සහ විවිධ සාම්ප්‍රදායික ආහාර ශ්‍රී ලංකාවේ ආහාර සංස්කෘතියේ කොටසකි.",
-
-                "Wildlife":
-                    "ශ්‍රී ලංකාවේ ජාතික උද්‍යාන සහ ස්වභාවික වාසස්ථාන තුළ විවිධ වනජීවී විශේෂ දැකිය හැක.",
-
-                "Heritage":
-                    "පැරණි රාජධානි, පුරාවිද්‍යාත්මක ස්ථාන, බලකොටු සහ ආගමික ස්ථාන ශ්‍රී ලංකාවේ උරුමයේ වැදගත් කොටස් වේ.",
-
-                "Culture":
-                    "නර්තන, සංගීතය, ආගමික උත්සව, කලා සහ විවිධ ප්‍රජාවන්ගේ සම්ප්‍රදායන් ශ්‍රී ලංකාවේ සංස්කෘතික විවිධත්වය පෙන්වයි."
-
-            };
+            <br><br>
+            `
+            :
+            ""
+        }
 
 
-            openPopup(`
+        ${
+            matchedFoods.length
+            ?
+            `
+            <h2 style="margin-bottom:15px;">
+                🍛 Food
+            </h2>
 
-                <div class="popupEmoji">
-                    ${title === "Mountains" ? "⛰️" :
-                      title === "Beaches" ? "🏖️" :
-                      title === "Food" ? "🍛" :
-                      title === "Wildlife" ? "🐘" :
-                      title === "Heritage" ? "🏛️" : "🎭"}
-                </div>
+            <div class="card-grid">
 
-                <h2 class="popupTitle">
-                    ${title}
-                </h2>
+                ${matchedFoods.map(food => `
 
-                <p class="popupDescription">
-                    ${information[title]}
+                    <article class="card">
+
+                        <img
+                            class="card-img"
+                            src="${food.image}"
+                            alt="${food.name}"
+                        >
+
+                        <div class="card-body">
+
+                            <h3>
+                                ${food.emoji}
+                                ${food.name}
+                            </h3>
+
+                            <p>
+                                ${food.description}
+                            </p>
+
+                            <button
+                                class="small-btn green"
+                                style="margin-top:12px;"
+                                onclick="goTo('food-detail',{
+                                    type:'food',
+                                    id:'${food.id}'
+                                })">
+
+                                View Details
+
+                            </button>
+
+                        </div>
+
+                    </article>
+
+                `).join("")}
+
+            </div>
+            `
+            :
+            ""
+        }
+
+
+        ${
+            !matchedPlaces.length &&
+            !matchedFoods.length
+            ?
+            `
+            <div class="empty">
+
+                <div class="empty-icon">😕</div>
+
+                <h3>No results</h3>
+
+                <p>
+                    Try another word.
                 </p>
 
-                <div class="popupSection">
+            </div>
+            `
+            :
+            ""
+        }
 
-                    <h4>🇱🇰 Discover More</h4>
+    `;
 
-                    <p>
-                        මෙම category එකට අදාළ
-                        Sri Lankan destinations අපි ඉදිරියේදී
-                        තවත් එකතු කරමු.
-                    </p>
-
-                </div>
-
-            `);
-
-        });
-
-    });
+}
 
 
-    /* ==========================================
-       SEARCH
-    ========================================== */
+/* =========================================================
+   GOOGLE / MAPS
+========================================================= */
 
-    const searchInput =
-        document.getElementById("searchInput");
+function openGoogle(query){
 
+    window.open(
+        "https://www.google.com/search?q=" +
+        encodeURIComponent(query),
+        "_blank"
+    );
 
-    searchInput.addEventListener("keyup", function() {
-
-        const searchText =
-            searchInput.value.toLowerCase();
-
-
-        destinationCards.forEach(function(card) {
-
-            const text =
-                card.innerText.toLowerCase();
+}
 
 
-            if (text.includes(searchText)) {
+function openMaps(query){
 
-                card.style.display = "block";
+    window.open(
+        "https://www.google.com/maps/search/?api=1&query=" +
+        encodeURIComponent(query),
+        "_blank"
+    );
 
-            } else {
-
-                card.style.display = "none";
-
-            }
-
-        });
-
-    });
+}
 
 
-    /* ==========================================
-       SMOOTH SCROLL
-    ========================================== */
+/* =========================================================
+   DARK MODE
+========================================================= */
 
-    document.querySelectorAll("a[href^='#']")
-        .forEach(function(link) {
+function toggleDark(){
 
-            link.addEventListener("click", function(e) {
+    document.body.classList.toggle("dark");
 
-                const target =
-                    document.querySelector(
-                        link.getAttribute("href")
-                    );
+    localStorage.setItem(
+        "slDark",
+        document.body.classList.contains("dark")
+    );
 
-                if (target) {
+}
 
-                    e.preventDefault();
 
-                    target.scrollIntoView({
-                        behavior: "smooth"
-                    });
+/* =========================================================
+   INITIALIZE
+========================================================= */
 
-                }
+function initialize(){
 
-            });
+    if(localStorage.getItem("slDark") === "true"){
+        document.body.classList.add("dark");
+    }
 
-        });
+    renderHome();
+    renderPlaces();
+    renderFood();
+    renderPacking();
+    fillPlannerDestinations();
+
+
+    history.replaceState(
+        {
+            page:"home",
+            place:null,
+            food:null
+        },
+        "",
+        "#home"
+    );
+
+
+    setTimeout(() => {
+
+        document.getElementById("loading")
+            .style.display = "none";
+
+    },600);
+
+}
+
+
+initialize();
 
 </script>
 
-
 </body>
-</html>
+    </html>
